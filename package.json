@@ -1,22 +1,26 @@
 {
   "name": "koishi-plugin-nmc-radar",
-  "description": "",
   "version": "0.0.1",
-  "main": "lib/index.js",
+  "description": "",
   "typings": "lib/index.d.ts",
-  "files": [
-    "lib",
-    "dist"
-  ],
   "license": "MIT",
-  "scripts": {},
   "keywords": [
     "chatbot",
     "koishi",
     "plugin"
   ],
-  "devDependencies": {},
+  "main": "lib/index.js",
+  "files": [
+    "dist",
+    "lib"
+  ],
   "peerDependencies": {
     "koishi": "4.18.11"
+  },
+  "dependencies": {
+    "jsdom": "^29.1.1"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^28.0.3"
   }
 }
