@@ -1,4 +1,11 @@
 {
+  "全国": "https://www.nmc.cn/publish/radar/chinaall.html",
+  "华北": "https://www.nmc.cn/publish/radar/huabei.html",
+  "东北": "https://www.nmc.cn/publish/radar/dongbei.html",
+  "华东": "https://www.nmc.cn/publish/radar/huadong.html",
+  "华南": "https://www.nmc.cn/publish/radar/huanan.html",
+  "西南": "https://www.nmc.cn/publish/radar/xinan.html",
+  "西北": "https://www.nmc.cn/publish/radar/xibei.html",
   "大兴": "https://www.nmc.cn/publish/radar/bei-jing/da-xing.htm",
   "海坨山": "https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/beijing/haituoshan/index.html",
   "塘沽": "https://www.nmc.cn/publish/radar/tian-jin/tian-jin.htm",
