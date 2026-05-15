@@ -11,6 +11,7 @@ export const Config: Schema<Config> = Schema.object({})
 
 export function apply(ctx: Context) {
   ctx.command('radar <name:string>', '查看雷达图')
+    .alias('雷达')
     .action(async ({ session }, name) => {
       const url = (radars as Dict<string>)[name]
       if (!url)
