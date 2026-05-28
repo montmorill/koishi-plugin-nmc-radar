@@ -15,7 +15,7 @@ export function apply(ctx: Context) {
     .action(async ({ session }, name) => {
       const url = (radars as Dict<string>)[name]
       if (!url)
-        return void session?.send('该雷达图不存在。')
+        return void session?.send('该雷达图不存在')
       const dom = new JSDOM(await ctx.http.get(url))
       const image = dom.window.document.querySelector('div[data-img]')
       return h('img', { src: (image as HTMLElement)?.dataset.img || '' })
