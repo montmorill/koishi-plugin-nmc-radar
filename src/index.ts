@@ -15,11 +15,11 @@ export function apply(ctx: Context) {
     .action(async ({ session }, name) => {
       const url = (radars as Dict<string>)[name]
       if (!url)
-        return void session?.send('该雷达站不存在，可使用 radar.list 查看所有雷达站')
+        return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
       const dom = new JSDOM(await ctx.http.get(url))
       const image = dom.window.document.querySelector('div[data-img]')
       return h('img', { src: (image as HTMLElement)?.dataset.img || '' })
     })
     .subcommand('.list', '查看所有雷达站')
-    .action(async () => Object.keys(radars).join(' '))
+    .action(() => Object.keys(radars).join(' '))
 }
