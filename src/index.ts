@@ -1,9 +1,17 @@
 import type { Context, Dict } from 'koishi'
+import { Buffer } from 'node:buffer'
+import { createWriteStream } from 'node:fs'
+import { mkdir } from 'node:fs/promises'
+import path from 'node:path'
+import GIFEncoder from 'gifencoder'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
+import {} from 'koishi-plugin-canvas'
+import probe from 'probe-image-size'
 import radars from './radars.json'
 
 export const name = 'nmc-radar'
+export const inject = ['canvas']
 
 export interface Config {}
 
@@ -12,13 +20,47 @@ export const Config: Schema<Config> = Schema.object({})
 export function apply(ctx: Context) {
   ctx.command('radar <name:string>', '查看雷达图')
     .alias('雷达')
-    .action(async ({ session }, name) => {
+    .option('gif', '生成 GIF 动画')
+    .action(async ({ session, options }, name) => {
       const url = (radars as Dict<string>)[name]
       if (!url)
         return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
-      const dom = new JSDOM(await ctx.http.get(url))
-      const image = dom.window.document.querySelector('div[data-img]')
-      return h('img', { src: (image as HTMLElement)?.dataset.img || '' })
+
+      const { window: { document } } = new JSDOM(await ctx.http.get(url))
+      const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
+      const urls = Array.from(nodes).map(node => node.dataset.img || '')
+
+      if (!(options as Dict<boolean>)?.gif)
+        return h('img', { src: urls[0] })
+
+      const images = []
+      for (const url of urls) {
+        const response = await ctx.http.get(url)
+        const buffer = Buffer.from(response)
+        const image = await ctx.canvas.loadImage(buffer)
+        images.push(image)
+      }
+
+      const tempDir = path.join(ctx.baseDir, 'temp', name)
+      await mkdir(tempDir, { recursive: true })
+      const filePath = path.join(tempDir, `${Date.now()}.gif`)
+
+      const { width, height } = await probe(urls[0])
+      const encoder = new GIFEncoder(width, height)
+      const writeStream = createWriteStream(filePath)
+      encoder.createReadStream().pipe(writeStream)
+
+      encoder.start()
+      for (const image of images.reverse()) {
+        const canvas = await ctx.canvas.createCanvas(width, height)
+        const surface = canvas.getContext('2d')
+        surface.drawImage(image, 0, 0, width, height)
+        encoder.addFrame(surface as any)
+      }
+      encoder.finish()
+
+      await new Promise<void>(resolve => writeStream.on('finish', resolve))
+      return h.image(`file:///${filePath}`, { width, height })
     })
     .subcommand('.list', '查看所有雷达站')
     .action(() => Object.keys(radars).join(' '))
