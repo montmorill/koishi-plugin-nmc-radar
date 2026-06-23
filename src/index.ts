@@ -20,4 +20,6 @@ export function apply(ctx: Context) {
       const image = dom.window.document.querySelector('div[data-img]')
       return h('img', { src: (image as HTMLElement)?.dataset.img || '' })
     })
+    .subcommand('.list', '查看所有雷达站')
+    .action(async () => Object.keys(radars).join(' '))
 }
