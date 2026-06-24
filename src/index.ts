@@ -1,5 +1,4 @@
 import type { Context, Dict } from 'koishi'
-import { Buffer } from 'node:buffer'
 import { createWriteStream } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 import path from 'node:path'
@@ -11,17 +10,23 @@ import probe from 'probe-image-size'
 import radars from './radars.json'
 
 export const name = 'nmc-radar'
-export const inject = ['canvas']
+export const inject = { optional: ['canvas'] }
 
 export interface Config {}
 
 export const Config: Schema<Config> = Schema.object({})
 
+type Resolver = (urls: string[]) => Promise<h>
+const resolvers: Record<string, Resolver> = {
+  default: async urls => h.img(urls[0]),
+  urls: async urls => h.text(urls.join('\n')),
+}
+
 export function apply(ctx: Context) {
-  ctx.command('radar <name:string>', '查看雷达图')
+  const command = ctx.command('radar <name:string>', '查看雷达图')
     .alias('雷达')
-    .option('gif', '生成 GIF 动画')
-    .action(async ({ session, options }, name) => {
+    .option('urls', '显示所有图片 URL')
+    .action(async ({ session, options = {} }, name) => {
       const url = (radars as Dict<string>)[name]
       if (!url)
         return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
@@ -30,16 +35,23 @@ export function apply(ctx: Context) {
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
       const urls = Array.from(nodes).map(node => node.dataset.img || '')
 
-      if (!(options as Dict<boolean>)?.gif)
-        return h('img', { src: urls[0] })
-
-      const images = []
-      for (const url of urls) {
-        const response = await ctx.http.get(url)
-        const buffer = Buffer.from(response)
-        const image = await ctx.canvas.loadImage(buffer)
-        images.push(image)
+      for (const [option, value] of Object.entries(options)) {
+        if (value && resolvers[option])
+          return await resolvers[option](urls)
       }
+      return await resolvers.default(urls)
+    })
+
+  command.subcommand('.list', '查看所有雷达站')
+    .action(() => Object.keys(radars).join(' '))
+
+  ctx.inject(['canvas'], async (ctx) => {
+    command.option('gif', '生成 GIF 动图')
+    resolvers.gif = async (urls) => {
+      const promises = urls.map(url => ctx.canvas.loadImage(url))
+      const results = await Promise.allSettled(promises)
+      const images = results.flatMap(result =>
+        result.status === 'fulfilled' ? [result.value] : [])
 
       const tempDir = path.join(ctx.baseDir, 'temp', name)
       await mkdir(tempDir, { recursive: true })
@@ -60,8 +72,7 @@ export function apply(ctx: Context) {
       encoder.finish()
 
       await new Promise<void>(resolve => writeStream.on('finish', resolve))
-      return h.image(`file:///${filePath}`, { width, height })
-    })
-    .subcommand('.list', '查看所有雷达站')
-    .action(() => Object.keys(radars).join(' '))
+      return h.img(`file:///${filePath}`, { width, height })
+    }
+  })
 }
