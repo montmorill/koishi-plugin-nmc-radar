@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-nmc-radar",
-  "version": "1.1.0",
-  "description": "",
+  "version": "1.1.1",
+  "description": "气象台雷达图插件",
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "repository": {
@@ -19,8 +19,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "koishi": "4.18.11",
-    "koishi-plugin-canvas": "^0.2.2"
+    "koishi": "4.18.11"
   },
   "dependencies": {
     "gifencoder": "^2.0.1",
@@ -30,7 +29,11 @@
   "devDependencies": {
     "@types/gifencoder": "^2.0.3",
     "@types/jsdom": "^28.0.3",
-    "@types/probe-image-size": "^7",
-    "koishi-plugin-canvas": "^0.2.2"
+    "@types/probe-image-size": "^7"
+  },
+  "koishi": {
+    "service": {
+      "optional": ["canvas"]
+    }
   }
 }
