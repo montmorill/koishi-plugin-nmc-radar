@@ -1,9 +1,9 @@
-import type { Context, Dict } from 'koishi'
+import type { Awaitable, Context } from 'koishi'
 import { createWriteStream } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import {} from '@koishijs/canvas'
-import GIFEncoder from 'gifencoder'
+import GIFEncoder from '@zorner/gifencoder'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
 import probe from 'probe-image-size'
@@ -12,41 +12,44 @@ import radars from './radars.json'
 export const name = 'nmc-radar'
 export const inject = { optional: ['canvas'] }
 
-export interface Config {}
-
-export const Config: Schema<Config> = Schema.object({})
-
-type Resolver = (urls: string[]) => Promise<h>
+type Resolver = (urls: string[]) => Awaitable<h>
 const resolvers: Record<string, Resolver> = {
-  default: async urls => h.img(urls[0]),
-  urls: async urls => h.text(urls.join('\n')),
+  img: urls => h.img(urls[0]),
+  imgs: urls => h(h.Fragment, ...urls.map(url => h.img(url))),
+  url: urls => h.text(urls[0]),
+  urls: urls => h.text(urls.join('\n')),
 }
 
-export function apply(ctx: Context) {
-  const command = ctx.command('radar <name:string>', '查看雷达图')
+export interface Config {
+  defaultResolver: keyof typeof resolvers
+}
+
+export const Config: Schema<Config> = Schema.object({
+  defaultResolver: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
+})
+
+export function apply(ctx: Context, config: Config) {
+  const command = ctx.command('radar <name:string>', '查看雷达图', { checkUnknown: true })
     .alias('雷达')
-    .option('urls', '显示所有图片 URL')
-    .action(async ({ session, options = {} }, name) => {
-      const url = (radars as Dict<string>)[name]
-      if (!url)
+    .option('type', '--type <type:string> 输出类型', { type: Object.keys(resolvers) })
+    .option('type', '--img 输出单张图片', { value: 'img' })
+    .option('type', '--imgs 输出多张图片', { value: 'imgs' })
+    .option('type', '--url 输出 URL', { value: 'url' })
+    .option('type', '--urls 输出 URL 列表', { value: 'urls' })
+    .action(async ({ session, options }, name) => {
+      if (!(name in radars))
         return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
 
+      const url = radars[name as keyof typeof radars]
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
       const urls = Array.from(nodes).map(node => node.dataset.img || '')
 
-      for (const [option, value] of Object.entries(options)) {
-        if (value && resolvers[option])
-          return await resolvers[option](urls)
-      }
-      return await resolvers.default(urls)
+      return await resolvers[options?.type || config.defaultResolver](urls)
     })
 
-  command.subcommand('.list', '查看所有雷达站')
-    .action(() => Object.keys(radars).join(' '))
-
   ctx.inject(['canvas'], async (ctx) => {
-    command.option('gif', '生成 GIF 动图')
+    command.option('type', '--gif 输出 GIF 动画', { value: 'gif' })
     resolvers.gif = async (urls) => {
       const promises = urls.map(url => ctx.canvas.loadImage(url))
       const results = await Promise.allSettled(promises)
@@ -75,4 +78,7 @@ export function apply(ctx: Context) {
       return h.img(`file:///${filePath}`, { width, height })
     }
   })
+
+  command.subcommand('.list', '查看所有雷达站')
+    .action(() => Object.keys(radars).join(' '))
 }
