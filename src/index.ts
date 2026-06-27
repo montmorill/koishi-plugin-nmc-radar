@@ -75,7 +75,7 @@ export function apply(ctx: Context, config: Config) {
       encoder.finish()
 
       await new Promise<void>(resolve => writeStream.on('finish', resolve))
-      return h.img(`file:///${filePath}`, { width, height })
+      return h.img(`file://${filePath}`, { width, height })
     }
   })
 
