@@ -1,18 +1,17 @@
 import type { Awaitable, Context } from 'koishi'
-import { createWriteStream } from 'node:fs'
-import { mkdir } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import {} from '@koishijs/canvas'
-import GIFEncoder from '@zorner/gifencoder'
 import { JSDOM } from 'jsdom'
-import { h, Schema } from 'koishi'
-import probe from 'probe-image-size'
+import { h, Random, Schema } from 'koishi'
+import {} from 'koishi-plugin-ffmpeg'
 import radars from './radars.json'
 
 export const name = 'nmc-radar'
-export const inject = { optional: ['canvas'] }
+export const inject = {
+  optional: ['ffmpeg'],
+}
 
-type Resolver = (urls: string[]) => Awaitable<h>
+type Resolver = (urls: string[], id: string) => Awaitable<h>
 const resolvers: Record<string, Resolver> = {
   img: urls => h.img(urls[0]),
   imgs: urls => h(h.Fragment, ...urls.map(url => h.img(url))),
@@ -44,38 +43,29 @@ export function apply(ctx: Context, config: Config) {
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
       const urls = Array.from(nodes).map(node => node.dataset.img || '')
-
-      return await resolvers[options?.type || config.defaultResolver](urls)
+      const resolver = resolvers[options?.type || config.defaultResolver]
+      return await resolver(urls, Random.id())
     })
 
-  ctx.inject(['canvas'], async (ctx) => {
+  ctx.inject(['ffmpeg'], async (ctx) => {
     command.option('type', '--gif 输出 GIF 动画', { value: 'gif' })
-    resolvers.gif = async (urls) => {
-      const promises = urls.map(url => ctx.canvas.loadImage(url))
-      const results = await Promise.allSettled(promises)
-      const images = results.flatMap(result =>
-        result.status === 'fulfilled' ? [result.value] : [])
+    resolvers.gif = async (urls, id) => {
+      const baseDir = path.join(ctx.baseDir, 'temp', name, id)
+      await mkdir(baseDir, { recursive: true })
 
-      const tempDir = path.join(ctx.baseDir, 'temp', name)
-      await mkdir(tempDir, { recursive: true })
-      const filePath = path.join(tempDir, `${Date.now()}.gif`)
+      await Promise.all(urls.map(async (url, i) => {
+        const response = await ctx.http.get(url, { responseType: 'stream' })
+        const filename = `${String(i + 1).padStart(3, '0')}.png`
+        const filePath = path.join(baseDir, filename)
+        await writeFile(filePath, response)
+      }))
 
-      const { width, height } = await probe(urls[0])
-      const encoder = new GIFEncoder(width, height)
-      const writeStream = createWriteStream(filePath)
-      encoder.createReadStream().pipe(writeStream)
+      const outputPath = path.join(baseDir, '..', `${id}.gif`)
+      await ctx.ffmpeg.builder()
+        .input(path.join(baseDir, '%03d.png'))
+        .run('file', outputPath)
 
-      encoder.start()
-      for (const image of images.reverse()) {
-        const canvas = await ctx.canvas.createCanvas(width, height)
-        const surface = canvas.getContext('2d')
-        surface.drawImage(image, 0, 0, width, height)
-        encoder.addFrame(surface as any)
-      }
-      encoder.finish()
-
-      await new Promise<void>(resolve => writeStream.on('finish', resolve))
-      return h.img(`file://${filePath}`, { width, height })
+      return h.img(`file:///${outputPath}`)
     }
   })
 
