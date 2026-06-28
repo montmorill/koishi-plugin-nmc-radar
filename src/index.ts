@@ -73,6 +73,7 @@ export function apply(ctx: Context, config: Config) {
       const outputPath = path.join(baseDir, '..', `${id}.gif`)
       await ctx.ffmpeg.builder()
         .input(path.join(baseDir, '%03d.png'))
+        .outputOption('-loop', '-1') // no loop
         .run('file', outputPath)
 
       return h.img(`file://${outputPath}`)
