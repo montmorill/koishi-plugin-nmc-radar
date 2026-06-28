@@ -1,4 +1,4 @@
-import type { Awaitable, Context } from 'koishi'
+import type { Awaitable, Context, Dict } from 'koishi'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { JSDOM } from 'jsdom'
@@ -16,7 +16,7 @@ interface Product {
   time: string
 }
 
-type Resolver = (products: Product[], id: string) => Awaitable<h>
+type Resolver = (products: Product[], id: string, options: Dict) => Awaitable<h>
 const resolvers: Record<string, Resolver> = {
   img: products => h(h.Fragment, ...products.map(url => h.img(url.url))),
   url: products => h.text(products.map(url => url.url).join('\n')),
@@ -33,33 +33,34 @@ export const Config: Schema<Config> = Schema.object({
 export function apply(ctx: Context, config: Config) {
   const command = ctx.command('radar <name:string>', '查看雷达图', { checkUnknown: true })
     .alias('雷达')
-    .option('reverse', '-r 反转顺序')
+    .option('reverse', '-R 反转顺序')
     .option('count', '-n <count:number> 最大输出数量')
     .option('type', '--type <type:string> 输出类型', { type: Object.keys(resolvers) })
     .option('type', '--img 输出图片', { value: 'img' })
     .option('type', '--url 输出 URL', { value: 'url' })
-    .action(async ({ session, options }, name) => {
+    .action(async ({ session, options = {} as Dict }, name) => {
       if (!(name in radars))
         return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
-
-      const type = options?.type || config.defaultResolver
-      const count = options?.count ?? (type === 'img' ? 1 : undefined)
-
       const url = radars[name as keyof typeof radars]
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
-      const products = Array.from(nodes).slice(0, count).map(node => ({
+
+      options.type ??= config.defaultResolver
+      options.count ??= options.type === 'img' ? 1 : undefined
+      const products = Array.from(nodes).slice(0, options.count).map(node => ({
         url: node.dataset.img!,
         time: node.dataset.time!, // MM/DD HH:mm
       }))
-      if (!options?.reverse)
-        products.reverse()
-      return await resolvers[type](products, Random.id())
+      options.reverse || products.reverse()
+      return await resolvers[options.type](products, Random.id(), options)
     })
 
   ctx.inject(['ffmpeg'], async (ctx) => {
-    command.option('type', '--gif 输出 GIF 动画', { value: 'gif' })
-    resolvers.gif = async (products, id) => {
+    command
+      .option('type', '--gif 输出 GIF 动画', { value: 'gif' })
+      .option('fps', '--fps <fps:number> 帧率', { fallback: 10 })
+
+    resolvers.gif = async (products, id, options) => {
       const baseDir = path.join(ctx.baseDir, 'temp', name, id)
       await mkdir(baseDir, { recursive: true })
 
@@ -74,6 +75,7 @@ export function apply(ctx: Context, config: Config) {
       await ctx.ffmpeg.builder()
         .input(path.join(baseDir, '%03d.png'))
         .outputOption('-loop', '-1') // no loop
+        .outputOption('-r', options.fps) // fps
         .run('file', outputPath)
 
       return h.img(`file://${outputPath}`)
