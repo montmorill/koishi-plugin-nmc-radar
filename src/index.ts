@@ -2,6 +2,7 @@ import type { Awaitable, Context, Dict } from 'koishi'
 import { Buffer } from 'node:buffer'
 import { access, mkdir, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
 import {} from 'koishi-plugin-ffmpeg'
@@ -32,7 +33,7 @@ export const Config: Schema<Config> = Schema.object({
 })
 
 export function apply(ctx: Context, config: Config) {
-  const command = ctx.command('radar <name:string>', '查看雷达图', { checkUnknown: true })
+  const command = ctx.command('radar <name:string>', '查看雷达图')
     .alias('雷达')
     .option('name', '--name <name:string> 雷达站名称')
     .option('count', '-n <count:number> 最大输出数量')
@@ -68,7 +69,7 @@ export function apply(ctx: Context, config: Config) {
       const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
       const outputPath = path.join(baseDir, [
         `${products[0].slug}+${products[products.length - 1].slug}`,
-        `-${options.fps}@${options.loop}.gif`,
+        `#${options.fps}@${options.loop}.gif`,
       ].join(''))
 
       try {
@@ -93,10 +94,8 @@ export function apply(ctx: Context, config: Config) {
           return filePath
         }))
 
-        const buffer = [
-          ...filePaths.filter(Boolean).flatMap(filePath =>
-            `file '${filePath!.replaceAll('\\', '/')}'`),
-        ].join('\n')
+        const buffer = filePaths.filter(Boolean).flatMap(filePath =>
+          `file '${filePath!.replaceAll('\\', '/')}'`).join('\n')
 
         await ctx.ffmpeg.builder()
           .input(Buffer.from(buffer))
@@ -105,10 +104,15 @@ export function apply(ctx: Context, config: Config) {
           .inputOption('-protocol_whitelist', 'file,fd')
           .inputOption('-r', options.fps)
           .outputOption('-loop', options.loop)
+          .outputOption('-filter_complex', [
+            '[0:v]split[out1][out2]',
+            '[out1]palettegen[p]',
+            '[out2][p]paletteuse',
+          ].join(';'))
           .run('file', outputPath)
       }
 
-      return h.img(`file://${outputPath}`)
+      return h.img(pathToFileURL(outputPath).href)
     }
   })
 
