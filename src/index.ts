@@ -95,7 +95,7 @@ export function apply(ctx: Context, config: Config) {
         }))
 
         const buffer = filePaths.filter(Boolean).flatMap(filePath =>
-          `file '${filePath!.replaceAll('\\', '/')}'`).join('\n')
+          `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
 
         await ctx.ffmpeg.builder()
           .input(Buffer.from(buffer))
