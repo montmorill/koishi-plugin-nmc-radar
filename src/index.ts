@@ -33,6 +33,16 @@ export const Config: Schema<Config> = Schema.object({
 })
 
 export function apply(ctx: Context, config: Config) {
+  ctx.i18n.define('zh-CN', {
+    commands: {
+      radar: {
+        messages: {
+          unknown: '未知雷达站名称，可使用 radar.list 查看所有雷达站。',
+        },
+      },
+    },
+  })
+
   const command = ctx.command('radar <name:string>', '查看雷达图')
     .alias('雷达')
     .option('name', '--name <name:string> 雷达站名称')
@@ -44,7 +54,7 @@ export function apply(ctx: Context, config: Config) {
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
       if (!(name in radars))
-        return void session?.send('雷达站不存在，可使用 radar.list 查看所有雷达站。')
+        return void session?.send(session.text('.messages.unknown'))
       const url = radars[options.name as keyof typeof radars]
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')

@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-nmc-radar",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "气象台雷达图插件",
   "typings": "lib/index.d.ts",
   "license": "MIT",
