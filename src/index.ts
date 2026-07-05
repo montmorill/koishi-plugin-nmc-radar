@@ -44,7 +44,6 @@ export function apply(ctx: Context, config: Config) {
   })
 
   const command = ctx.command('radar <name:string>', '查看雷达图')
-    .alias('雷达')
     .option('name', '--name <name:string> 雷达站名称')
     .option('count', '-n <count:number> 最大输出数量')
     .option('reverse', '-R 反转顺序')
