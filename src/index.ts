@@ -53,7 +53,7 @@ export function apply(ctx: Context, config: Config) {
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
       if (!(name in radars))
-        return void session?.send(session.text('.messages.unknown'))
+        return void session?.send(session.text('.unknown'))
       const url = radars[options.name as keyof typeof radars]
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
