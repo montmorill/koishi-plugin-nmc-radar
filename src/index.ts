@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
 import {} from 'koishi-plugin-ffmpeg'
+import zhCN from '../locales/zh-CN.yml'
 import radars from './radars.json'
 
 export const name = 'nmc-radar'
@@ -33,23 +34,15 @@ export const Config: Schema<Config> = Schema.object({
 })
 
 export function apply(ctx: Context, config: Config) {
-  ctx.i18n.define('zh-CN', {
-    commands: {
-      radar: {
-        messages: {
-          unknown: '未知雷达站名称，可使用 radar.list 查看所有雷达站。',
-        },
-      },
-    },
-  })
+  ctx.i18n.define('zh-CN', zhCN)
 
-  const command = ctx.command('radar <name:string>', '查看雷达图')
-    .option('name', '--name <name:string> 雷达站名称')
-    .option('count', '-n <count:number> 最大输出数量')
-    .option('reverse', '-R 反转顺序')
-    .option('type', '--type <type:string> 输出类型', { type: Object.keys(resolvers) })
-    .option('type', '--img 输出图片', { value: 'img' })
-    .option('type', '--url 输出 URL', { value: 'url' })
+  const command = ctx.command('radar <name:string>')
+    .option('name', '--name <name:string>')
+    .option('count', '-n <count:number>')
+    .option('reverse', '-R')
+    .option('type', '--type <type:string>', { type: Object.keys(resolvers) })
+    .option('type', '--img', { value: 'img' })
+    .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
       if (!(name in radars))
@@ -70,9 +63,9 @@ export function apply(ctx: Context, config: Config) {
 
   ctx.inject(['ffmpeg'], async (ctx) => {
     command
-      .option('type', '--gif 输出 GIF 动画', { value: 'gif' })
-      .option('fps', '--fps <fps:number> 帧率', { fallback: 10 })
-      .option('loop', '--loop <loop:number> 循环次数', { fallback: -1 })
+      .option('type', '--gif', { value: 'gif' })
+      .option('fps', '--fps <fps:number>', { fallback: 10 })
+      .option('loop', '--loop <loop:number>', { fallback: -1 })
 
     resolvers.gif = async (products, options) => {
       const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
@@ -125,6 +118,6 @@ export function apply(ctx: Context, config: Config) {
     }
   })
 
-  command.subcommand('.list', '查看所有雷达站')
+  command.subcommand('.list')
     .action(() => Object.keys(radars).join(' '))
 }
