@@ -167,6 +167,8 @@ export function apply(ctx: Context, config: Config) {
     })
 
   function formatEntry([name, value]: [string, string | StringTree]): h[] {
+    if (name.startsWith('~'))
+      return []
     const isRadar = typeof value === 'string'
     if (!isRadar && name.startsWith('$'))
       return Object.entries(value).flatMap(formatEntry)
