@@ -1,40 +1,40 @@
 $天气实况:
-  天气图: # TODO: refactor this
+  天气图:
     中国天气图:
-      中国天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h000.htm
-      中国天气图925hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h925.htm
-      中国天气图850hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h850.htm
-      中国天气图700hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h700.htm
-      中国天气图500hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h500.htm
-      中国天气图200hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h200.htm
+      中国地面天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h000.htm
+      中国925hPa天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h925.htm
+      中国850hPa天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h850.htm
+      中国700hPa天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h700.htm
+      中国500hPa天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h500.htm
+      中国200hPa天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h200.htm
     中国叠加天气图:
-      中国叠加天气图: https://www.nmc.cn/publish/observations/china/dm/radar-h000.htm
-      中国叠加天气图925hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h925.htm
-      中国叠加天气图850hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h850.htm
-      中国叠加天气图700hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h700.htm
-      中国叠加天气图500hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h500.htm
-      中国叠加天气图200hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h200.htm
+      中国地面叠加天气图: https://www.nmc.cn/publish/observations/china/dm/radar-h000.htm
+      中国925hPa叠加天气图: https://www.nmc.cn/publish/observations/china/dm/cloud-h925.htm
+      中国850hPa叠加天气图: https://www.nmc.cn/publish/observations/china/dm/cloud-h850.htm
+      中国700hPa叠加天气图: https://www.nmc.cn/publish/observations/china/dm/cloud-h700.htm
+      中国500hPa叠加天气图: https://www.nmc.cn/publish/observations/china/dm/cloud-h500.htm
+      中国200hPa叠加天气图: https://www.nmc.cn/publish/observations/china/dm/cloud-h200.htm
     亚欧天气图:
-      亚欧天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h000.htm
-      亚欧天气图925: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h925.htm
-      亚欧天气图850: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h850.htm
-      亚欧天气图700: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h700.htm
-      亚欧天气图500: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h500.htm
-      亚欧天气图200: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h200.htm
+      亚欧地面天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h000.htm
+      亚欧925hPa天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h925.htm
+      亚欧850hPa天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h850.htm
+      亚欧700hPa天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h700.htm
+      亚欧500hPa天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h500.htm
+      亚欧200hPa天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h200.htm
     亚欧叠加天气图:
-      亚欧叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h000.htm
-      亚欧叠加天气图925hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h925.htm
-      亚欧叠加天气图850hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h850.htm
-      亚欧叠加天气图700hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h700.htm
-      亚欧叠加天气图500hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h500.htm
-      亚欧叠加天气图200hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h200.htm
+      亚欧地面叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h000.htm
+      亚欧925hPa叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h925.htm
+      亚欧850hPa叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h850.htm
+      亚欧700hPa叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h700.htm
+      亚欧500hPa叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h500.htm
+      亚欧200hPa叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h200.htm
     北半球天气图:
-      北半球天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h000.htm
-      北半球天气图925hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h925.htm
-      北半球天气图850hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h850.htm
-      北半球天气图700hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h700.htm
-      北半球天气图500hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h500.htm
-      北半球天气图200hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h200.htm
+      北半球地面天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h000.htm
+      北半球925hPa天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h925.htm
+      北半球850hPa天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h850.htm
+      北半球700hPa天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h700.htm
+      北半球500hPa天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h500.htm
+      北半球200hPa天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h200.htm
   卫星云图:
     FY4B: https://www.nmc.cn/publish/satellite/fy4b-visible.htm
     FY2G可见光: https://www.nmc.cn/publish/satellite/fy2evisible.html
