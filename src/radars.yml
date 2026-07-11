@@ -398,7 +398,7 @@ $天气实况:
     30厘米: https://www.nmc.cn/publish/soil-moisture/30cm.html
     40厘米: https://www.nmc.cn/publish/soil-moisture/40cm.html
     50厘米: https://www.nmc.cn/publish/soil-moisture/50cm.html
-天气预报:
+^天气预报:
   降水量预报:
     6小时降水量预报: https://www.nmc.cn/publish/precipitation/6hours-6.html
     24小时降水量预报: https://www.nmc.cn/publish/precipitation/1-day.html
@@ -456,4 +456,24 @@ $天气实况:
     晚稻: https://www.nmc.cn/publish/agro/information/laterice.html
     春玉米: https://www.nmc.cn/publish/agro/information/spring-corn.html
     一季稻: https://www.nmc.cn/publish/agro/information/rice-quarter.html
-# TODO: 数值预报
+数值预报:
+  北半球:
+    500hPa高度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/500hPa-hgt.htm
+    850hPa温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/850hPa-temp.htm
+    海平面气压: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/sea-level-pressure.htm
+  $亚欧:
+    亚欧高度风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ae/500hPa+hgt+850hPa+wind.htm
+  $东亚:
+    海平面气压场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/slp.htm
+    高度风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/500hPa+hgt+850hPa+wind.htm
+    24小时降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/24hour-rain.htm
+    累计降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/cumulative_precipitation.htm
+    2米温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/t2m.htm
+    2米最高温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMax.htm
+    2米最低温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMin.htm
+    2米相对湿度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/RH2m.htm
+    雷达组合反射率: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/ldzhfsl.htm
+  $全球:
+    $FY4A卫星云图模拟:
+      红外亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/grapes_mswx/11um.htm
+      水汽亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/grapes_mswx/6.8um.htm

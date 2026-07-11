@@ -21,9 +21,13 @@ interface Product {
   slug: string
 }
 
-function makeProduct(name: string, url: string, time: string) {
+function makeProduct(url: string, time: string) {
   url = url.replace('/medium/', '/')
-  const slug = time.replaceAll(/[/ :]/g, '')
+  if (time.length < 10 && time.endsWith('小时'))
+    time = `${url.slice(29, 39)}+${time}` // YYYY/MM/DD
+  const slug = time
+    .replace(/ (\d+)小时/, '+$1')
+    .replaceAll(/[/ :]|小时/g, '')
   return { url, slug }
 }
 
@@ -38,9 +42,11 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
     if (products.length === 1)
       return h.img(products[0].url)
 
+    options.fps ??= products.length > 10 ? 8 : 2
+
     const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
     const outputPath = path.join(baseDir, [
-      `${products[0].slug}+${products[products.length - 1].slug}`,
+      `${products[0].slug}...${products[products.length - 1].slug}`,
       `#${options.fps}@${options.plays}.${format}`,
     ].join(''))
 
@@ -110,18 +116,20 @@ interface StringTree { [key: string]: string | StringTree }
 export function apply(ctx: Context, config: Config) {
   ctx.i18n.define('zh-CN', zhCN)
 
-  const radarMap = new Map<string, string>()
+  const radarMap = new Map<string, { url: string, reverse: boolean }>()
   const regionMap = new Map<string, StringTree>()
-  function traverse(tree: StringTree) {
+  function traverse(tree: StringTree, reverse = false) {
     for (const key in tree) {
       const value = tree[key]
-      const name = key.startsWith('$') ? key.slice(1) : key
+      if (key.startsWith('^'))
+        reverse = !reverse
+      const name = /^[$^]/.test(key) ? key.slice(1) : key
       if (typeof value !== 'string') {
         regionMap.set(name, value)
-        traverse(value)
+        traverse(value, reverse)
         continue
       }
-      radarMap.set(name, value)
+      radarMap.set(name, { url: value, reverse })
     }
   }
   traverse({ [config.root]: nestedRadars })
@@ -135,20 +143,21 @@ export function apply(ctx: Context, config: Config) {
     .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
-      const url = radarMap.get(options.name)
-      if (!url)
+      const radar = radarMap.get(options.name)
+      if (!radar)
         return void await session?.send(session.text('.unknown', [options.name]))
-      const { window: { document } } = new JSDOM(await ctx.http.get(url))
+      const { window: { document } } = new JSDOM(await ctx.http.get(radar.url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
       let products = Array.from(nodes).map(({ dataset }) =>
-        makeProduct(options.name, dataset.img!, dataset.time!))
+        makeProduct(dataset.img!, dataset.time!))
       if (products.length === 0)
         products.push({ url: config.nodata, slug: 'nodata' })
 
       options.type ??= config.default
       options.count ??= options.type === 'img' ? 1 : undefined
       products = products.slice(0, options.count)
-      options.reverse || products.reverse()
+      if (radar.reverse === !!options.reverse)
+        products.reverse()
 
       const composer = composers[options.type]
       Object.assign(options, { session })
@@ -160,7 +169,7 @@ export function apply(ctx: Context, config: Config) {
       .option('type', '--gif', { value: 'gif' })
       .option('type', '--mp4', { value: 'mp4' })
       .option('type', '--apng', { value: 'apng' })
-      .option('fps', '--fps <fps:posint>', { fallback: 10 })
+      .option('fps', '--fps <fps:posint>')
       .option('plays', '--plays <plays:natural>', { fallback: 1 })
       .option('plays', '--loop', { value: 0 })
     composers.gif = video(ctx, 'gif', h.img)
@@ -181,6 +190,8 @@ export function apply(ctx: Context, config: Config) {
     const isRadar = typeof value === 'string'
     if (!isRadar && name.startsWith('$'))
       return Object.entries(value).flatMap(formatEntry)
+    if (name.startsWith('^'))
+      name = name.slice(1)
     return [h('inlinecmd', {
       text: `${isRadar ? 'radar' : 'radar.list'} ${name}`,
       enter: true,
