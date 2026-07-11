@@ -181,7 +181,7 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
       options.loop = options.plays === 0 ? 0
         : options.plays === 1 ? -1 : options.plays - 1
 
-      await ctx.ffmpeg.builder()
+      const builder = ctx.ffmpeg.builder()
         .input(Buffer.from(buffer))
         .inputOption('-f', 'concat')
         .inputOption('-safe', '0')
@@ -189,12 +189,14 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
         .inputOption('-r', options.fps)
         .outputOption('-loop', options.loop)
         .outputOption('-plays', options.plays)
-        .outputOption('-filter_complex', [
-          '[0:v]split[out1][out2]',
-          '[out1]palettegen[p]',
-          '[out2][p]paletteuse',
-        ].join(';'))
-        .run('file', outputPath)
+
+      format === 'gif' && builder.outputOption('-filter_complex', [
+        '[0:v]split[out1][out2]',
+        '[out1]palettegen[p]',
+        '[out2][p]paletteuse',
+      ].join(';'))
+
+      await builder.run('file', outputPath)
     }
 
     return video(pathToFileURL(outputPath).href)
