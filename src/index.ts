@@ -17,47 +17,64 @@ export const inject = {
 }
 
 interface Product {
-  url: string
+  img: string
   slug: string
+}
+
+function makeProduct(name: string, { img, time }: Dict<string>) {
+  img = img.replace('/medium/', '/')
+  const slug = time.replaceAll(/[/ :]/g, '')
+  return { img, slug }
 }
 
 type Resolver = (products: Product[], options: Dict) => Awaitable<h>
 const resolvers: Record<string, Resolver> = {
-  img: products => h(h.Fragment, ...products.map(url => h.img(url.url))),
-  url: products => h.text(products.map(url => url.url).join('\n')),
+  img: products => h(h.Fragment, ...products.map(({ img }) => h.img(img))),
+  url: products => h.text(products.map(({ img }) => img).join('\n')),
 }
 
 export interface Config {
-  defaultResolver: keyof typeof resolvers
+  root: string
+  nodata: string
+  default: keyof typeof resolvers
 }
 
 export const Config: Schema<Config> = Schema.object({
-  defaultResolver: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
+  root: Schema.string().default('中央气象台').description('根区域。'),
+  nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
+  default: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
 })
 
-interface NestedMap { [key: string]: string | NestedMap }
+interface StringTree { [key: string]: string | StringTree }
 
 export function apply(ctx: Context, config: Config) {
   ctx.i18n.define('zh-CN', zhCN)
 
   const radarMap = new Map<string, string>()
-  const regionMap = new Map<string, NestedMap>()
-  function traverse(radars: NestedMap) {
-    for (const name in radars) {
-      if (typeof radars[name] === 'string') {
-        radarMap.set(name, radars[name])
+  const regionMap = new Map<string, StringTree>()
+  function traverse(tree: StringTree) {
+    for (const key in tree) {
+      if (key.startsWith('~'))
+        continue
+      const name = key.startsWith('$')
+        ? key.slice(1)
+        : key
+
+      const value = tree[key]
+      if (typeof value === 'string') {
+        radarMap.set(name, value)
       }
       else {
-        regionMap.set(name, radars[name])
-        traverse(radars[name])
+        regionMap.set(name, value)
+        traverse(value)
       }
     }
   }
-  traverse({ 全国: nestedRadars })
+  traverse({ [config.root]: nestedRadars })
 
   const command = ctx.command('radar <name:string>')
     .option('name', '--name <name:string>')
-    .option('count', '-n <count:number>')
+    .option('count', '-n <count:posint>')
     .option('reverse', '-R')
     .option('type', '--type <type:string>', { type: Object.keys(resolvers) })
     .option('type', '--img', { value: 'img' })
@@ -68,14 +85,14 @@ export function apply(ctx: Context, config: Config) {
       if (!url)
         return void await session?.send(session.text('.unknown', [options.name]))
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
-      const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
+      let products = Array.from(document.querySelectorAll<HTMLElement>('div[data-img]'))
+        .map(({ dataset }) => makeProduct(options.name, dataset as Dict))
+      if (products.length === 0)
+        products.push({ img: config.nodata, slug: 'nodata' })
 
-      options.type ??= config.defaultResolver
+      options.type ??= config.default
       options.count ??= options.type === 'img' ? 1 : undefined
-      const products = Array.from(nodes).slice(0, options.count).map(node => ({
-        url: node.dataset.img!,
-        slug: node.dataset.time!.replaceAll(/[/ :]/g, ''),
-      }))
+      products = Array.from(products).slice(0, options.count)
       options.reverse || products.reverse()
       return await resolvers[options.type](products, options)
     })
@@ -87,6 +104,9 @@ export function apply(ctx: Context, config: Config) {
       .option('loop', '--loop <loop:number>', { fallback: -1 })
 
     resolvers.gif = async (products, options) => {
+      if (products.length === 1)
+        return h.img(products[0].img)
+
       const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
       const outputPath = path.join(baseDir, [
         `${products[0].slug}+${products[products.length - 1].slug}`,
@@ -98,12 +118,12 @@ export function apply(ctx: Context, config: Config) {
       }
       catch {
         await mkdir(baseDir, { recursive: true })
-        const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
+        const filePaths = await Promise.all(products.map(async ({ img, slug }) => {
           const filePath = path.join(baseDir, `${slug}.png`)
           // eslint-disable-next-line style/max-statements-per-line, style/brace-style
           try { await access(filePath) } catch {
             try {
-              const response = await ctx.http.get(url, { responseType: 'stream' })
+              const response = await ctx.http.get(img, { responseType: 'stream' })
               await pipeline(response, createWriteStream(filePath))
             }
             catch {
@@ -138,14 +158,21 @@ export function apply(ctx: Context, config: Config) {
   })
 
   command.subcommand('.list [name:string]')
-    .action(({ session }, name = '全国') => {
+    .action(({ session }, name = config.root) => {
       const region = regionMap.get(name)
       if (!region)
         return session?.text('.unknown', [name])
-      return `${name}: ${Object.entries(region)
-        .map(([name, value]) => typeof value === 'string'
-          ? h('inlinecmd', { text: `radar ${name}`, enter: true }, h.text(name))
-          : h('inlinecmd', { text: `radar.list ${name}`, enter: true }, h('b', name)))
-        .join(' ')}`
+      const values = Object.entries(region).flatMap(formatEntry)
+      return `${name}: ${values.join(' ')}`
     })
+
+  function formatEntry([name, value]: [string, string | StringTree]): h[] {
+    const isRadar = typeof value === 'string'
+    if (!isRadar && name.startsWith('$'))
+      return Object.entries(value).flatMap(formatEntry)
+    return [h('inlinecmd', {
+      text: `${isRadar ? 'radar' : 'radar.list'} ${name}`,
+      enter: true,
+    }, isRadar ? h.text(name) : h('b', name))]
+  }
 }

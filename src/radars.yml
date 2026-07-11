@@ -1,323 +1,459 @@
-全国: https://www.nmc.cn/publish/radar/chinaall.html
-华北:
-  华北: https://www.nmc.cn/publish/radar/huabei.html
-  北京:
-    大兴: https://www.nmc.cn/publish/radar/bei-jing/da-xing.htm
-    海坨山: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/beijing/haituoshan/index.html
-  天津:
-    塘沽: https://www.nmc.cn/publish/radar/tian-jin/tian-jin.htm
-    宝坻: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/tianjin/baodi/index.html
-  河北:
-    石家庄: https://www.nmc.cn/publish/radar/he-bei/shi-jia-zhuang.htm
-    张家口: https://www.nmc.cn/publish/radar/he-bei/zhang-jia-kou.htm
-    承德: https://www.nmc.cn/publish/radar/he-bei/cheng-de.htm
-    秦皇岛: https://www.nmc.cn/publish/radar/he-bei/qin-huang-dao.htm
-    沧州: https://www.nmc.cn/publish/radar/he-bei/cang-zhou.htm
-    邯郸: https://www.nmc.cn/publish/radar/he-bei/han-dan.htm
-  山西:
-    太原: https://www.nmc.cn/publish/radar/shan-xi/tai-yuan.htm
-    临汾: https://www.nmc.cn/publish/radar/shan-xi/lin-fen.htm
-    大同: https://www.nmc.cn/publish/radar/shan-xi/da-tong.htm
-    长治: https://www.nmc.cn/publish/radar/shan-xi/chang-zhi.htm
-    吕梁: https://www.nmc.cn/publish/radar/shan-xi/lv-liang.htm
-    五寨: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/wuzhai/index.html
-  内蒙古:
-    鄂尔多斯: https://www.nmc.cn/publish/radar/nei-meng/e-er-duo-si.htm
-    呼和浩特: https://www.nmc.cn/publish/radar/nei-meng/hu-he-hao-te.htm
-    赤峰: https://www.nmc.cn/publish/radar/nei-meng/chi-feng.htm
-    海拉尔: https://www.nmc.cn/publish/radar/nei-meng/hai-la-er.htm
-    通辽: https://www.nmc.cn/publish/radar/nei-meng/tong-liao.htm
-    临河: https://www.nmc.cn/publish/radar/nei-meng/lin-he.htm
-    霍林郭勒: https://www.nmc.cn/publish/radar/nei-meng/huo-lin-guo-le.htm
-    满洲里: https://www.nmc.cn/publish/radar/nei-meng/man-zhou-li.htm
-    集宁: https://www.nmc.cn/publish/radar/nei-meng/jining.html
-    锡林浩特: https://www.nmc.cn/publish/radar/nei-meng/xilinhaote.html
-    阿尔山: https://www.nmc.cn/publish/radar/nei-meng/aershan.html
-    巴林左旗: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/neimenggu/balinzuoqi/index.html
-东北:
-  东北: https://www.nmc.cn/publish/radar/dongbei.html
-  辽宁:
-    沈阳: https://www.nmc.cn/publish/radar/liao-ning/shen-yang.htm
-    营口: https://www.nmc.cn/publish/radar/liao-ning/ying-kou.htm
-    大连: https://www.nmc.cn/publish/radar/liao-ning/da-lian.htm
-    朝阳: https://www.nmc.cn/publish/radar/liao-ning/chao-yang.htm
-    葫芦岛: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/liaoning/huludao/index.html
-  吉林:
-    长春: https://www.nmc.cn/publish/radar/ji-lin/chang-chun.htm
-    白城: https://www.nmc.cn/publish/radar/ji-lin/bai-cheng.htm
-    白山: https://www.nmc.cn/publish/radar/ji-lin/bai-shan.htm
-    辽源: https://www.nmc.cn/publish/radar/ji-lin/liao-yuan.htm
-    延吉: https://www.nmc.cn/publish/radar/ji-lin/yan-ji.htm
-    松原: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jilin/songyuan/index.html
-    吉林: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jilin/jilin/index.html
-  黑龙江:
-    哈尔滨: https://www.nmc.cn/publish/radar/hei-long-jiang/ha-er-bin.htm
-    齐齐哈尔: https://www.nmc.cn/publish/radar/hei-long-jiang/qi-qi-ha-er.htm
-    佳木斯: https://www.nmc.cn/publish/radar/hei-long-jiang/jia-mu-si.htm
-    绥化: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/suihua/index.html
-    加格达奇: https://www.nmc.cn/publish/radar/hei-long-jiang/jia-ge-da-qi.htm
-    黑河: https://www.nmc.cn/publish/radar/hei-long-jiang/hei-he.htm
-    伊春: https://www.nmc.cn/publish/radar/hei-long-jiang/yi-chun.htm
-    宝清: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/baoqing/index.html
-    牡丹江: https://www.nmc.cn/publish/radar/hei-long-jiang/mu-dan-jiang.htm
-    建三江: https://www.nmc.cn/publish/radar/hei-long-jiang/jian-san-jiang.htm
-    九三: https://www.nmc.cn/publish/radar/hei-long-jiang/jiu-san.htm
-    黑瞎子岛: https://www.nmc.cn/publish/radar/hei-long-jiang/hei-xia-zi-dao.htm
-    大庆: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/daqing/index.html
-华东:
-  华东: https://www.nmc.cn/publish/radar/huadong.html
-  上海:
-    青浦: https://www.nmc.cn/publish/radar/shang-hai/qing-pu.htm
-    南汇: https://www.nmc.cn/publish/radar/shang-hai/nan-hui.htm
-  江苏:
-    南京: https://www.nmc.cn/publish/radar/jiang-su/nan-jing.htm
-    南通: https://www.nmc.cn/publish/radar/jiang-su/nan-tong.htm
-    盐城: https://www.nmc.cn/publish/radar/jiang-su/yan-cheng.htm
-    徐州: https://www.nmc.cn/publish/radar/jiang-su/xu-zhou.htm
-    连云港: https://www.nmc.cn/publish/radar/jiang-su/lian-yun-gang.htm
-    常州: https://www.nmc.cn/publish/radar/jiang-su/chang-zhou.htm
-    淮安: https://www.nmc.cn/publish/radar/jiang-su/huai-an.htm
-    泰州: https://www.nmc.cn/publish/radar/jiang-su/tai-zhou.htm
-    宿迁: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jiangsu/suqian/index.html
-  浙江:
-    杭州: https://www.nmc.cn/publish/radar/zhe-jiang/hang-zhou.htm
-    宁波: https://www.nmc.cn/publish/radar/zhe-jiang/ning-bo.htm
-    温州: https://www.nmc.cn/publish/radar/zhe-jiang/wen-zhou.htm
-    舟山: https://www.nmc.cn/publish/radar/zhe-jiang/zhou-shan.htm
-    金华: https://www.nmc.cn/publish/radar/zhe-jiang/jin-hua.htm
-    衢州: https://www.nmc.cn/publish/radar/zhe-jiang/qu-zhou.htm
-    台州: https://www.nmc.cn/publish/radar/zhe-jiang/tai-zhou.htm
-    湖州: https://www.nmc.cn/publish/radar/zhe-jiang/hu-zhou.htm
-    龙泉: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/longquan/index.html
-    丽水: https://www.nmc.cn/publish/radar/zhe-jiang/li-shui.htm
-    绍兴: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/shaoxing/index.html
-    临安: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/linan/index.html
-    文成: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/wencheng/index.html
-    嵊泗: https://www.nmc.cn/publish/radar/zhe-jiang/cheng-si.htm
-  安徽:
-    合肥: https://www.nmc.cn/publish/radar/an-hui/he-fei.htm
-    马鞍山: https://www.nmc.cn/publish/radar/an-hui/ma-an-shan.htm
-    阜阳: https://www.nmc.cn/publish/radar/an-hui/fu-yang.htm
-    蚌埠: https://www.nmc.cn/publish/radar/an-hui/beng-bu.htm
-    安庆: https://www.nmc.cn/publish/radar/an-hui/an-qing.htm
-    黄山: https://www.nmc.cn/publish/radar/an-hui/huang-shan.htm
-    铜陵: https://www.nmc.cn/publish/radar/an-hui/tong-ling.htm
-    宣城: https://www.nmc.cn/publish/radar/an-hui/xuancheng.html
-  福建:
-    福州: https://www.nmc.cn/publish/radar/fu-jian/fu-zhou.htm
-    厦门: https://www.nmc.cn/publish/radar/fu-jian/xia-men.htm
-    泉州: https://www.nmc.cn/publish/radar/fu-jian/quan-zhou.htm
-    建阳: https://www.nmc.cn/publish/radar/fu-jian/jian-yang.htm
-    三明: https://www.nmc.cn/publish/radar/fu-jian/san-ming.htm
-    龙岩: https://www.nmc.cn/publish/radar/fu-jian/long-yan.htm
-    漳州: https://www.nmc.cn/publish/radar/fu-jian/zhang-zhou.htm
-    宁德: https://www.nmc.cn/publish/radar/fu-jian/ning-de.htm
-  江西:
-    南昌: https://www.nmc.cn/publish/radar/jiang-xi/nan-chang.htm
-    吉安: https://www.nmc.cn/publish/radar/jiang-xi/ji-an.htm
-    安州: https://www.nmc.cn/publish/radar/jiang-xi/gan-zhou.htm
-    九江: https://www.nmc.cn/publish/radar/jiang-xi/jiu-jiang.htm
-    上饶: https://www.nmc.cn/publish/radar/jiang-xi/shang-rao.htm
-    宜春: https://www.nmc.cn/publish/radar/jiang-xi/yi-chun.htm
-    抚州: https://www.nmc.cn/publish/radar/jiang-xi/fu-zhou.htm
-    景德镇: https://www.nmc.cn/publish/radar/jiang-xi/jing-de-zhen.htm
-  山东:
-    济南: https://www.nmc.cn/publish/radar/shan-dong/ji-nan.htm
-    烟台: https://www.nmc.cn/publish/radar/shan-dong/yan-tai.htm
-    临沂: https://www.nmc.cn/publish/radar/shan-dong/lin-yi.htm
-    滨州: https://www.nmc.cn/publish/radar/shan-dong/bin-zhou.htm
-    青岛: https://www.nmc.cn/publish/radar/shan-dong/qing-dao.htm
-    泰山: https://www.nmc.cn/publish/radar/shan-dong/tai-shan.htm
-    荣成: https://www.nmc.cn/publish/radar/shan-dong/rong-cheng.htm
-    潍坊: https://www.nmc.cn/publish/radar/shan-dong/wei-fang.htm
-    聊城: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shandong/liaocheng/index.html
-    济宁: https://www.nmc.cn/publish/radar/shan-dong/ji-ning.html
-华中:
-  华中: https://www.nmc.cn/publish/radar/huazhong.html
-  河南:
-    商丘: https://www.nmc.cn/publish/radar/he-nan/shang-qiu.htm
-    郑州: https://www.nmc.cn/publish/radar/he-nan/zheng-zhou.htm
-    南阳: https://www.nmc.cn/publish/radar/he-nan/nan-yang.htm
-    洛阳: https://www.nmc.cn/publish/radar/he-nan/luo-yang.htm
-    濮阳: https://www.nmc.cn/publish/radar/he-nan/pu-yang.htm
-    驻马店: https://www.nmc.cn/publish/radar/he-nan/zhu-ma-dian.htm
-    三门峡: https://www.nmc.cn/publish/radar/he-nan/san-men-xia.htm
-    平顶山: https://www.nmc.cn/publish/radar/he-nan/ping-ding-shan.htm
-    信阳: https://www.nmc.cn/publish/radar/henan/xinyang.html
-  湖北:
-    武汉: https://www.nmc.cn/publish/radar/hu-bei/wu-han.htm
-    宜昌: https://www.nmc.cn/publish/radar/hu-bei/yi-chang.htm
-    恩施: https://www.nmc.cn/publish/radar/hu-bei/en-shi.htm
-    十堰: https://www.nmc.cn/publish/radar/hu-bei/shi-yan.htm
-    荆州: https://www.nmc.cn/publish/radar/hu-bei/jing-zhou.htm
-    随州: https://www.nmc.cn/publish/radar/hu-bei/sui-zhou.htm
-    神农架: https://www.nmc.cn/publish/radar/hu-bei/shen-nong-jia.htm
-    襄阳: https://www.nmc.cn/publish/radar/hu-bei/xiang-yang.htm
-    麻城: https://www.nmc.cn/publish/radar/hu-bei/ma-cheng.htm
-    黄冈: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hubei/huanggang/index.html
-  湖南:
-    长沙: https://www.nmc.cn/publish/radar/hu-nan/chang-sha.htm
-    常德: https://www.nmc.cn/publish/radar/hu-nan/chang-de.htm
-    郴州: https://www.nmc.cn/publish/radar/hu-nan/chen-zhou.htm
-    永州: https://www.nmc.cn/publish/radar/hu-nan/yong-zhou.htm
-    岳阳: https://www.nmc.cn/publish/radar/hu-nan/yue-yang.htm
-    邵阳: https://www.nmc.cn/publish/radar/hu-nan/shao-yang.htm
-    怀化: https://www.nmc.cn/publish/radar/hu-nan/huai-hua.htm
-    张家界: https://www.nmc.cn/publish/radar/hu-nan/zhang-jia-jie.htm
-    湘潭: https://www.nmc.cn/publish/radar/hunan/xiangtan.html
-    衡阳: https://www.nmc.cn/publish/radar/hunan/hengyang.html
-    娄底: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/loudi/index.html
-    株洲: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/zhuzhou/index.html
-    益阳: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/yiyang/index.html
-    湘西: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/xiangxi/index.html
-华南:
-  华南: https://www.nmc.cn/publish/radar/huanan.html
-  广东:
-    上川岛: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guangdong/shangchuandao/index.html
-    广州: https://www.nmc.cn/publish/radar/guang-dong/guang-zhou.htm
-    韶关: https://www.nmc.cn/publish/radar/guang-dong/shao-guan.htm
-    梅州: https://www.nmc.cn/publish/radar/guang-dong/mei-zhou.htm
-    阳江: https://www.nmc.cn/publish/radar/guang-dong/yang-jiang.htm
-    汕头: https://www.nmc.cn/publish/radar/guang-dong/shan-tou.htm
-    深圳: https://www.nmc.cn/publish/radar/guang-dong/shen-zhen.htm
-    湛江: https://www.nmc.cn/publish/radar/guang-dong/zhan-jiang.htm
-    河源: https://www.nmc.cn/publish/radar/guang-dong/he-yuan.htm
-    汕尾: https://www.nmc.cn/publish/radar/guang-dong/shan-wei.htm
-    肇庆: https://www.nmc.cn/publish/radar/guang-dong/zhao-qing.htm
-    连州: https://www.nmc.cn/publish/radar/guang-dong/lian-zhou.htm
-    茂名: https://www.nmc.cn/publish/radar/guang-dong/mao-ming.htm
-  广西:
-    桂林: https://www.nmc.cn/publish/radar/guang-xi/gui-lin.htm
-    柳州: https://www.nmc.cn/publish/radar/guang-xi/liu-zhou.htm
-    南宁: https://www.nmc.cn/publish/radar/guang-xi/nan-ning.htm
-    百色: https://www.nmc.cn/publish/radar/guang-xi/bai-se.htm
-    河池: https://www.nmc.cn/publish/radar/guang-xi/he-chi.htm
-    北海: https://www.nmc.cn/publish/radar/guang-xi/bei-hai.htm
-    梧州: https://www.nmc.cn/publish/radar/guang-xi/wu-zhou.htm
-    玉林: https://www.nmc.cn/publish/radar/guang-xi/yu-lin.htm
-    防城港: https://www.nmc.cn/publish/radar/guang-xi/fang-cheng-gang.htm
-    贺州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guangxi/hezhou/index.html
-    崇左: https://www.nmc.cn/publish/radar/guang-xi/chong-zuo.html
-  海南:
-    海口: https://www.nmc.cn/publish/radar/hai-nan/hai-kou.htm
-    三亚: https://www.nmc.cn/publish/radar/hai-nan/san-ya.htm
-    三沙: https://www.nmc.cn/publish/radar/hai-nan/san-sha.htm
-    东方: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hainan/dongfang/index.html
-    万宁: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hainan/wanning/index.html
-西南:
-  西南: https://www.nmc.cn/publish/radar/xinan.html
-  重庆:
-    重庆: https://www.nmc.cn/publish/radar/chong-qing/chong-qing.htm
-    万州: https://www.nmc.cn/publish/radar/chong-qing/wan-zhou.htm
-    黔江: https://www.nmc.cn/publish/radar/chong-qing/qian-jiang.htm
-    永川: https://www.nmc.cn/publish/radar/chong-qing/yong-chuan.htm
-    涪陵: https://www.nmc.cn/publish/radar/chong-qing/pei-ling.htm
-  四川:
-    成都: https://www.nmc.cn/publish/radar/si-chuan/cheng-du.htm
-    红原: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/hongyuan/index.html
-    巴中: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/bazhong/index.html
-    宜宾: https://www.nmc.cn/publish/radar/si-chuan/yi-bin.htm
-    绵阳: https://www.nmc.cn/publish/radar/si-chuan/mian-yang.htm
-    南充: https://www.nmc.cn/publish/radar/si-chuan/nan-chong.htm
-    西昌: https://www.nmc.cn/publish/radar/si-chuan/xi-chang.htm
-    广元: https://www.nmc.cn/publish/radar/si-chuan/guang-yuan.htm
-    达州: https://www.nmc.cn/publish/radar/si-chuan/da-zhou.htm
-    乐山: https://www.nmc.cn/publish/radar/si-chuan/le-shan.htm
-    康定: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/kangding/index.html
-    雅安: https://www.nmc.cn/publish/radar/si-chuan/ya-an.htm
-  贵州:
-    贵阳: https://www.nmc.cn/publish/radar/gui-zhou/gui-yang.htm
-    遵义: https://www.nmc.cn/publish/radar/gui-zhou/zun-yi.htm
-    铜仁: https://www.nmc.cn/publish/radar/gui-zhou/tong-ren.htm
-    兴义: https://www.nmc.cn/publish/radar/gui-zhou/xing-yi.htm
-    毕节: https://www.nmc.cn/publish/radar/gui-zhou/bi-jie.htm
-    黔东南: https://www.nmc.cn/publish/radar/gui-zhou/qian-dong-nan.htm
-    都匀: https://www.nmc.cn/publish/radar/gui-zhou/dou-yun.htm
-    六盘水: https://www.nmc.cn/publish/radar/gui-zhou/liu-pan-shui.htm
-    榕江: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/rong-jiang.html
-    习水: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/xi-shui.html
-    务川: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/wu-chuan.html
-  云南:
-    曲靖: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/qujing/index.html
-    红河哈尼族彝族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/honghehanizuyizuzizhizhou/index.html
-    昆明: https://www.nmc.cn/publish/radar/yun-nan/kun-ming.htm
-    德宏: https://www.nmc.cn/publish/radar/yun-nan/de-hong.htm
-    昭通: https://www.nmc.cn/publish/radar/yun-nan/zhao-tong.htm
-    文山: https://www.nmc.cn/publish/radar/yun-nan/wen-shan.htm
-    思茅: https://www.nmc.cn/publish/radar/yun-nan/si-mao.htm
-    丽江: https://www.nmc.cn/publish/radar/yun-nan/li-jiang.htm
-    大理: https://www.nmc.cn/publish/radar/yun-nan/da-li.htm
-    西双版纳傣族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/xishuangbannadaizuzizhizhou/index.html
-    临沧: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/lincang/index.html
-    怒江: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/nujiang/index.html
-  西藏:
-    拉萨: https://www.nmc.cn/publish/radar/xi-cang/la-sa.htm
-    林芝: https://www.nmc.cn/publish/radar/xi-cang/lin-zhi.htm
-    日喀则: https://www.nmc.cn/publish/radar/xi-cang/ri-ka-ze.htm
-    那曲: https://www.nmc.cn/publish/radar/xi-cang/na-qu.htm
-西北:
-  西北: https://www.nmc.cn/publish/radar/xibei.html
-  陕西:
-    西安: https://www.nmc.cn/publish/radar/shan-xi/xi-an.htm
-    榆林: https://www.nmc.cn/publish/radar/shan-xi/yu-lin.htm
-    安康: https://www.nmc.cn/publish/radar/shan-xi/an-kang.htm
-    延安: https://www.nmc.cn/publish/radar/shan-xi/yan-an.htm
-    汉中: https://www.nmc.cn/publish/radar/shan-xi/han-zhong.htm
-    宝鸡: https://www.nmc.cn/publish/radar/shan-xi/bao-ji.htm
-    商洛: https://www.nmc.cn/publish/radar/shan-xi/shang-luo.htm
-    渭南: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/weinan/index.html
-    定边: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/dingbian/index.html
-  甘肃:
-    兰州: https://www.nmc.cn/publish/radar/gan-su/lan-zhou.htm
-    临夏: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/linxia/index.html
-    西峰: https://www.nmc.cn/publish/radar/gan-su/xi-feng.htm
-    张掖: https://www.nmc.cn/publish/radar/gan-su/zhang-ye.htm
-    天水: https://www.nmc.cn/publish/radar/gan-su/tian-shui.htm
-    嘉峪关: https://www.nmc.cn/publish/radar/gan-su/jia-yu-guan.htm
-    甘南: https://www.nmc.cn/publish/radar/gan-su/gan-nan.htm
-    陇南: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/longnan/index.html
-    定西: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/dingxi/index.html
-  青海:
-    西宁: https://www.nmc.cn/publish/radar/qing-hai/xi-ning.htm
-    海北: https://www.nmc.cn/publish/radar/qing-hai/hai-bei.htm
-    海南州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/hainan/index.html
-    玉树藏族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/yushucangzuzizhizhou/index.html
-    黄南藏族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/huangnancangzuzizhizhou/index.html
-  宁夏:
-    银川: https://www.nmc.cn/publish/radar/ning-xia/yin-chuan.htm
-    固原: https://www.nmc.cn/publish/radar/ning-xia/gu-yuan.htm
-    吴忠: https://www.nmc.cn/publish/radar/ning-xia/wu-zhong.htm
-  新疆:
-    塔城: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/tacheng/index.html
-    巴里坤: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/balikun/index.html
-    乌鲁木齐: https://www.nmc.cn/publish/radar/xin-jiang/wu-lu-mu-qi.htm
-    克拉玛依: https://www.nmc.cn/publish/radar/xin-jiang/ke-la-ma-yi.htm
-    库尔勒: https://www.nmc.cn/publish/radar/xin-jiang/ku-er-le.htm
-    阿克苏: https://www.nmc.cn/publish/radar/xin-jiang/a-ke-su.htm
-    伊宁: https://www.nmc.cn/publish/radar/xin-jiang/yi-ning.htm
-    石河子: https://www.nmc.cn/publish/radar/xin-jiang/shi-he-zi.htm
-    喀什: https://www.nmc.cn/publish/radar/xin-jiang/ka-shen.htm
-    奎屯: https://www.nmc.cn/publish/radar/xin-jiang/kui-tun.htm
-    和田: https://www.nmc.cn/publish/radar/xin-jiang/he-tian.htm
-    五家渠: https://www.nmc.cn/publish/radar/xin-jiang/wu-jia-qu.htm
-    图木舒克: https://www.nmc.cn/publish/radar/xin-jiang/tu-mu-shu-ke.htm
-    塔斯尔海: https://www.nmc.cn/publish/radar/xin-jiang/si-ta-er-hai.htm
-    哈密: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/hami/index.html
-    精河: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/jinghe/index.html
-    伊州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/yizhou/index.html
-    阿勒泰: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/aletai/index.html
-    奇台: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/qitai/index.html
-    阿拉尔: https://www.nmc.cn/publish/radar/xin-jiang/a-la-er.htm
-    新源: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/xinyuan/index.html
-    哈密伊州区: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/hamiyizhouqu/index.html
-    铁门关: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/tiemenguan/index.html
-降水量:
-  1小时降水量: https://www.nmc.cn/publish/observations/hourly-precipitation.html
-  6小时降水量: https://www.nmc.cn/publish/observations/6hour-precipitation.html
-  24小时降水量: https://www.nmc.cn/publish/observations/24hour-precipitation.html
-  近10天降水量: https://www.nmc.cn/publish/observations/precipitation-10day.html
-  近20天降水量: https://www.nmc.cn/publish/observations/precipitation-20day.html
-  近30天降水量: https://www.nmc.cn/publish/observations/precipitation-30day.html
-  近10天降水距平百分率: https://www.nmc.cn/publish/observations/precipitation-10pa.html
-  近20天降水距平百分率: https://www.nmc.cn/publish/observations/precipitation-20pa.html
-  近30天降水距平百分率: https://www.nmc.cn/publish/observations/precipitation-30pa.html
+$天气实况:
+  天气图: # TODO: refactor this
+    中国天气图:
+      中国天气图: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h000.htm
+      中国天气图925hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h925.htm
+      中国天气图850hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h850.htm
+      中国天气图700hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h700.htm
+      中国天气图500hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h500.htm
+      中国天气图200hPa: https://www.nmc.cn/publish/observations/china/dm/weatherchart-h200.htm
+    中国叠加天气图:
+      中国叠加天气图: https://www.nmc.cn/publish/observations/china/dm/radar-h000.htm
+      中国叠加天气图925hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h925.htm
+      中国叠加天气图850hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h850.htm
+      中国叠加天气图700hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h700.htm
+      中国叠加天气图500hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h500.htm
+      中国叠加天气图200hPa: https://www.nmc.cn/publish/observations/china/dm/cloud-h200.htm
+    亚欧天气图:
+      亚欧天气图: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h000.htm
+      亚欧天气图925: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h925.htm
+      亚欧天气图850: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h850.htm
+      亚欧天气图700: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h700.htm
+      亚欧天气图500: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h500.htm
+      亚欧天气图200: https://www.nmc.cn/publish/observations/asia/dm/weatherchart-h200.htm
+    亚欧叠加天气图:
+      亚欧叠加天气图: https://www.nmc.cn/publish/observations/asia/dm/cloud-h000.htm
+      亚欧叠加天气图925hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h925.htm
+      亚欧叠加天气图850hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h850.htm
+      亚欧叠加天气图700hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h700.htm
+      亚欧叠加天气图500hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h500.htm
+      亚欧叠加天气图200hPa: https://www.nmc.cn/publish/observations/asia/dm/cloud-h200.htm
+    北半球天气图:
+      北半球天气图: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h000.htm
+      北半球天气图925hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h925.htm
+      北半球天气图850hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h850.htm
+      北半球天气图700hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h700.htm
+      北半球天气图500hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h500.htm
+      北半球天气图200hPa: https://www.nmc.cn/publish/observations/north/dm/weatherchart-h200.htm
+  卫星云图:
+    FY4B: https://www.nmc.cn/publish/satellite/fy4b-visible.htm
+    FY2G可见光: https://www.nmc.cn/publish/satellite/fy2evisible.html
+    FY2G增强图:
+      水汽: https://www.nmc.cn/publish/satellite/fy2e/water_vapor.html
+      红外一: https://www.nmc.cn/publish/satellite/fy2e/infrared_1.html
+      红外二: https://www.nmc.cn/publish/satellite/fy2e/infrared_2.html
+    FY2G黑白图:
+      可见光: https://www.nmc.cn/publish/satellite/fy2e_bawhite/visible_light.html
+      中红外: https://www.nmc.cn/publish/satellite/fy2e_bawhite/mid-infrared.html
+    FY2G云盘图:
+      彩色云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-color.html
+      红外一云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-ir1.html
+      红外二云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-ir2.html
+      中红外云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-ir3.html
+      水汽云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-wv.html
+      可见光云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-vis.html
+    海区红外云图: https://www.nmc.cn/publish/satellite/China_Northwest_Pacific_Ocean.html
+    # 台风检测: https://www.nmc.cn/publish/typhoon/fy2c-pj2.html
+  $雷达图:
+    全国: https://www.nmc.cn/publish/radar/chinaall.html
+    华北: https://www.nmc.cn/publish/radar/huabei.html
+    北京:
+      大兴: https://www.nmc.cn/publish/radar/bei-jing/da-xing.htm
+      海坨山: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/beijing/haituoshan/index.html
+    天津:
+      塘沽: https://www.nmc.cn/publish/radar/tian-jin/tian-jin.htm
+      宝坻: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/tianjin/baodi/index.html
+    河北:
+      石家庄: https://www.nmc.cn/publish/radar/he-bei/shi-jia-zhuang.htm
+      张家口: https://www.nmc.cn/publish/radar/he-bei/zhang-jia-kou.htm
+      承德: https://www.nmc.cn/publish/radar/he-bei/cheng-de.htm
+      秦皇岛: https://www.nmc.cn/publish/radar/he-bei/qin-huang-dao.htm
+      沧州: https://www.nmc.cn/publish/radar/he-bei/cang-zhou.htm
+      邯郸: https://www.nmc.cn/publish/radar/he-bei/han-dan.htm
+    山西:
+      太原: https://www.nmc.cn/publish/radar/shan-xi/tai-yuan.htm
+      临汾: https://www.nmc.cn/publish/radar/shan-xi/lin-fen.htm
+      大同: https://www.nmc.cn/publish/radar/shan-xi/da-tong.htm
+      长治: https://www.nmc.cn/publish/radar/shan-xi/chang-zhi.htm
+      吕梁: https://www.nmc.cn/publish/radar/shan-xi/lv-liang.htm
+      五寨: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/wuzhai/index.html
+    内蒙古:
+      鄂尔多斯: https://www.nmc.cn/publish/radar/nei-meng/e-er-duo-si.htm
+      呼和浩特: https://www.nmc.cn/publish/radar/nei-meng/hu-he-hao-te.htm
+      赤峰: https://www.nmc.cn/publish/radar/nei-meng/chi-feng.htm
+      海拉尔: https://www.nmc.cn/publish/radar/nei-meng/hai-la-er.htm
+      通辽: https://www.nmc.cn/publish/radar/nei-meng/tong-liao.htm
+      临河: https://www.nmc.cn/publish/radar/nei-meng/lin-he.htm
+      霍林郭勒: https://www.nmc.cn/publish/radar/nei-meng/huo-lin-guo-le.htm
+      满洲里: https://www.nmc.cn/publish/radar/nei-meng/man-zhou-li.htm
+      集宁: https://www.nmc.cn/publish/radar/nei-meng/jining.html
+      锡林浩特: https://www.nmc.cn/publish/radar/nei-meng/xilinhaote.html
+      阿尔山: https://www.nmc.cn/publish/radar/nei-meng/aershan.html
+      巴林左旗: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/neimenggu/balinzuoqi/index.html
+    东北: https://www.nmc.cn/publish/radar/dongbei.html
+    辽宁:
+      沈阳: https://www.nmc.cn/publish/radar/liao-ning/shen-yang.htm
+      营口: https://www.nmc.cn/publish/radar/liao-ning/ying-kou.htm
+      大连: https://www.nmc.cn/publish/radar/liao-ning/da-lian.htm
+      朝阳: https://www.nmc.cn/publish/radar/liao-ning/chao-yang.htm
+      葫芦岛: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/liaoning/huludao/index.html
+    吉林:
+      长春: https://www.nmc.cn/publish/radar/ji-lin/chang-chun.htm
+      白城: https://www.nmc.cn/publish/radar/ji-lin/bai-cheng.htm
+      白山: https://www.nmc.cn/publish/radar/ji-lin/bai-shan.htm
+      辽源: https://www.nmc.cn/publish/radar/ji-lin/liao-yuan.htm
+      延吉: https://www.nmc.cn/publish/radar/ji-lin/yan-ji.htm
+      松原: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jilin/songyuan/index.html
+      吉林: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jilin/jilin/index.html
+    黑龙江:
+      哈尔滨: https://www.nmc.cn/publish/radar/hei-long-jiang/ha-er-bin.htm
+      齐齐哈尔: https://www.nmc.cn/publish/radar/hei-long-jiang/qi-qi-ha-er.htm
+      佳木斯: https://www.nmc.cn/publish/radar/hei-long-jiang/jia-mu-si.htm
+      绥化: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/suihua/index.html
+      加格达奇: https://www.nmc.cn/publish/radar/hei-long-jiang/jia-ge-da-qi.htm
+      黑河: https://www.nmc.cn/publish/radar/hei-long-jiang/hei-he.htm
+      伊春: https://www.nmc.cn/publish/radar/hei-long-jiang/yi-chun.htm
+      宝清: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/baoqing/index.html
+      牡丹江: https://www.nmc.cn/publish/radar/hei-long-jiang/mu-dan-jiang.htm
+      建三江: https://www.nmc.cn/publish/radar/hei-long-jiang/jian-san-jiang.htm
+      九三: https://www.nmc.cn/publish/radar/hei-long-jiang/jiu-san.htm
+      黑瞎子岛: https://www.nmc.cn/publish/radar/hei-long-jiang/hei-xia-zi-dao.htm
+      大庆: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/heilongjiang/daqing/index.html
+    华东: https://www.nmc.cn/publish/radar/huadong.html
+    上海:
+      青浦: https://www.nmc.cn/publish/radar/shang-hai/qing-pu.htm
+      南汇: https://www.nmc.cn/publish/radar/shang-hai/nan-hui.htm
+    江苏:
+      南京: https://www.nmc.cn/publish/radar/jiang-su/nan-jing.htm
+      南通: https://www.nmc.cn/publish/radar/jiang-su/nan-tong.htm
+      盐城: https://www.nmc.cn/publish/radar/jiang-su/yan-cheng.htm
+      徐州: https://www.nmc.cn/publish/radar/jiang-su/xu-zhou.htm
+      连云港: https://www.nmc.cn/publish/radar/jiang-su/lian-yun-gang.htm
+      常州: https://www.nmc.cn/publish/radar/jiang-su/chang-zhou.htm
+      淮安: https://www.nmc.cn/publish/radar/jiang-su/huai-an.htm
+      泰州: https://www.nmc.cn/publish/radar/jiang-su/tai-zhou.htm
+      宿迁: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/jiangsu/suqian/index.html
+    浙江:
+      杭州: https://www.nmc.cn/publish/radar/zhe-jiang/hang-zhou.htm
+      宁波: https://www.nmc.cn/publish/radar/zhe-jiang/ning-bo.htm
+      温州: https://www.nmc.cn/publish/radar/zhe-jiang/wen-zhou.htm
+      舟山: https://www.nmc.cn/publish/radar/zhe-jiang/zhou-shan.htm
+      金华: https://www.nmc.cn/publish/radar/zhe-jiang/jin-hua.htm
+      衢州: https://www.nmc.cn/publish/radar/zhe-jiang/qu-zhou.htm
+      台州: https://www.nmc.cn/publish/radar/zhe-jiang/tai-zhou.htm
+      湖州: https://www.nmc.cn/publish/radar/zhe-jiang/hu-zhou.htm
+      龙泉: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/longquan/index.html
+      丽水: https://www.nmc.cn/publish/radar/zhe-jiang/li-shui.htm
+      绍兴: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/shaoxing/index.html
+      临安: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/linan/index.html
+      文成: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/zhejiang/wencheng/index.html
+      嵊泗: https://www.nmc.cn/publish/radar/zhe-jiang/cheng-si.htm
+    安徽:
+      合肥: https://www.nmc.cn/publish/radar/an-hui/he-fei.htm
+      马鞍山: https://www.nmc.cn/publish/radar/an-hui/ma-an-shan.htm
+      阜阳: https://www.nmc.cn/publish/radar/an-hui/fu-yang.htm
+      蚌埠: https://www.nmc.cn/publish/radar/an-hui/beng-bu.htm
+      安庆: https://www.nmc.cn/publish/radar/an-hui/an-qing.htm
+      黄山: https://www.nmc.cn/publish/radar/an-hui/huang-shan.htm
+      铜陵: https://www.nmc.cn/publish/radar/an-hui/tong-ling.htm
+      宣城: https://www.nmc.cn/publish/radar/an-hui/xuancheng.html
+    福建:
+      福州: https://www.nmc.cn/publish/radar/fu-jian/fu-zhou.htm
+      厦门: https://www.nmc.cn/publish/radar/fu-jian/xia-men.htm
+      泉州: https://www.nmc.cn/publish/radar/fu-jian/quan-zhou.htm
+      建阳: https://www.nmc.cn/publish/radar/fu-jian/jian-yang.htm
+      三明: https://www.nmc.cn/publish/radar/fu-jian/san-ming.htm
+      龙岩: https://www.nmc.cn/publish/radar/fu-jian/long-yan.htm
+      漳州: https://www.nmc.cn/publish/radar/fu-jian/zhang-zhou.htm
+      宁德: https://www.nmc.cn/publish/radar/fu-jian/ning-de.htm
+    江西:
+      南昌: https://www.nmc.cn/publish/radar/jiang-xi/nan-chang.htm
+      吉安: https://www.nmc.cn/publish/radar/jiang-xi/ji-an.htm
+      安州: https://www.nmc.cn/publish/radar/jiang-xi/gan-zhou.htm
+      九江: https://www.nmc.cn/publish/radar/jiang-xi/jiu-jiang.htm
+      上饶: https://www.nmc.cn/publish/radar/jiang-xi/shang-rao.htm
+      宜春: https://www.nmc.cn/publish/radar/jiang-xi/yi-chun.htm
+      抚州: https://www.nmc.cn/publish/radar/jiang-xi/fu-zhou.htm
+      景德镇: https://www.nmc.cn/publish/radar/jiang-xi/jing-de-zhen.htm
+    山东:
+      济南: https://www.nmc.cn/publish/radar/shan-dong/ji-nan.htm
+      烟台: https://www.nmc.cn/publish/radar/shan-dong/yan-tai.htm
+      临沂: https://www.nmc.cn/publish/radar/shan-dong/lin-yi.htm
+      滨州: https://www.nmc.cn/publish/radar/shan-dong/bin-zhou.htm
+      青岛: https://www.nmc.cn/publish/radar/shan-dong/qing-dao.htm
+      泰山: https://www.nmc.cn/publish/radar/shan-dong/tai-shan.htm
+      荣成: https://www.nmc.cn/publish/radar/shan-dong/rong-cheng.htm
+      潍坊: https://www.nmc.cn/publish/radar/shan-dong/wei-fang.htm
+      聊城: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shandong/liaocheng/index.html
+      济宁: https://www.nmc.cn/publish/radar/shan-dong/ji-ning.html
+    华中: https://www.nmc.cn/publish/radar/huazhong.html
+    河南:
+      商丘: https://www.nmc.cn/publish/radar/he-nan/shang-qiu.htm
+      郑州: https://www.nmc.cn/publish/radar/he-nan/zheng-zhou.htm
+      南阳: https://www.nmc.cn/publish/radar/he-nan/nan-yang.htm
+      洛阳: https://www.nmc.cn/publish/radar/he-nan/luo-yang.htm
+      濮阳: https://www.nmc.cn/publish/radar/he-nan/pu-yang.htm
+      驻马店: https://www.nmc.cn/publish/radar/he-nan/zhu-ma-dian.htm
+      三门峡: https://www.nmc.cn/publish/radar/he-nan/san-men-xia.htm
+      平顶山: https://www.nmc.cn/publish/radar/he-nan/ping-ding-shan.htm
+      信阳: https://www.nmc.cn/publish/radar/henan/xinyang.html
+    湖北:
+      武汉: https://www.nmc.cn/publish/radar/hu-bei/wu-han.htm
+      宜昌: https://www.nmc.cn/publish/radar/hu-bei/yi-chang.htm
+      恩施: https://www.nmc.cn/publish/radar/hu-bei/en-shi.htm
+      十堰: https://www.nmc.cn/publish/radar/hu-bei/shi-yan.htm
+      荆州: https://www.nmc.cn/publish/radar/hu-bei/jing-zhou.htm
+      随州: https://www.nmc.cn/publish/radar/hu-bei/sui-zhou.htm
+      神农架: https://www.nmc.cn/publish/radar/hu-bei/shen-nong-jia.htm
+      襄阳: https://www.nmc.cn/publish/radar/hu-bei/xiang-yang.htm
+      麻城: https://www.nmc.cn/publish/radar/hu-bei/ma-cheng.htm
+      黄冈: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hubei/huanggang/index.html
+    湖南:
+      长沙: https://www.nmc.cn/publish/radar/hu-nan/chang-sha.htm
+      常德: https://www.nmc.cn/publish/radar/hu-nan/chang-de.htm
+      郴州: https://www.nmc.cn/publish/radar/hu-nan/chen-zhou.htm
+      永州: https://www.nmc.cn/publish/radar/hu-nan/yong-zhou.htm
+      岳阳: https://www.nmc.cn/publish/radar/hu-nan/yue-yang.htm
+      邵阳: https://www.nmc.cn/publish/radar/hu-nan/shao-yang.htm
+      怀化: https://www.nmc.cn/publish/radar/hu-nan/huai-hua.htm
+      张家界: https://www.nmc.cn/publish/radar/hu-nan/zhang-jia-jie.htm
+      湘潭: https://www.nmc.cn/publish/radar/hunan/xiangtan.html
+      衡阳: https://www.nmc.cn/publish/radar/hunan/hengyang.html
+      娄底: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/loudi/index.html
+      株洲: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/zhuzhou/index.html
+      益阳: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/yiyang/index.html
+      湘西: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hunan/xiangxi/index.html
+    华南: https://www.nmc.cn/publish/radar/huanan.html
+    广东:
+      上川岛: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guangdong/shangchuandao/index.html
+      广州: https://www.nmc.cn/publish/radar/guang-dong/guang-zhou.htm
+      韶关: https://www.nmc.cn/publish/radar/guang-dong/shao-guan.htm
+      梅州: https://www.nmc.cn/publish/radar/guang-dong/mei-zhou.htm
+      阳江: https://www.nmc.cn/publish/radar/guang-dong/yang-jiang.htm
+      汕头: https://www.nmc.cn/publish/radar/guang-dong/shan-tou.htm
+      深圳: https://www.nmc.cn/publish/radar/guang-dong/shen-zhen.htm
+      湛江: https://www.nmc.cn/publish/radar/guang-dong/zhan-jiang.htm
+      河源: https://www.nmc.cn/publish/radar/guang-dong/he-yuan.htm
+      汕尾: https://www.nmc.cn/publish/radar/guang-dong/shan-wei.htm
+      肇庆: https://www.nmc.cn/publish/radar/guang-dong/zhao-qing.htm
+      连州: https://www.nmc.cn/publish/radar/guang-dong/lian-zhou.htm
+      茂名: https://www.nmc.cn/publish/radar/guang-dong/mao-ming.htm
+    广西:
+      桂林: https://www.nmc.cn/publish/radar/guang-xi/gui-lin.htm
+      柳州: https://www.nmc.cn/publish/radar/guang-xi/liu-zhou.htm
+      南宁: https://www.nmc.cn/publish/radar/guang-xi/nan-ning.htm
+      百色: https://www.nmc.cn/publish/radar/guang-xi/bai-se.htm
+      河池: https://www.nmc.cn/publish/radar/guang-xi/he-chi.htm
+      北海: https://www.nmc.cn/publish/radar/guang-xi/bei-hai.htm
+      梧州: https://www.nmc.cn/publish/radar/guang-xi/wu-zhou.htm
+      玉林: https://www.nmc.cn/publish/radar/guang-xi/yu-lin.htm
+      防城港: https://www.nmc.cn/publish/radar/guang-xi/fang-cheng-gang.htm
+      贺州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guangxi/hezhou/index.html
+      崇左: https://www.nmc.cn/publish/radar/guang-xi/chong-zuo.html
+    海南:
+      海口: https://www.nmc.cn/publish/radar/hai-nan/hai-kou.htm
+      三亚: https://www.nmc.cn/publish/radar/hai-nan/san-ya.htm
+      三沙: https://www.nmc.cn/publish/radar/hai-nan/san-sha.htm
+      东方: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hainan/dongfang/index.html
+      万宁: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/hainan/wanning/index.html
+    西南: https://www.nmc.cn/publish/radar/xinan.html
+    重庆:
+      重庆: https://www.nmc.cn/publish/radar/chong-qing/chong-qing.htm
+      万州: https://www.nmc.cn/publish/radar/chong-qing/wan-zhou.htm
+      黔江: https://www.nmc.cn/publish/radar/chong-qing/qian-jiang.htm
+      永川: https://www.nmc.cn/publish/radar/chong-qing/yong-chuan.htm
+      涪陵: https://www.nmc.cn/publish/radar/chong-qing/pei-ling.htm
+    四川:
+      成都: https://www.nmc.cn/publish/radar/si-chuan/cheng-du.htm
+      红原: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/hongyuan/index.html
+      巴中: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/bazhong/index.html
+      宜宾: https://www.nmc.cn/publish/radar/si-chuan/yi-bin.htm
+      绵阳: https://www.nmc.cn/publish/radar/si-chuan/mian-yang.htm
+      南充: https://www.nmc.cn/publish/radar/si-chuan/nan-chong.htm
+      西昌: https://www.nmc.cn/publish/radar/si-chuan/xi-chang.htm
+      广元: https://www.nmc.cn/publish/radar/si-chuan/guang-yuan.htm
+      达州: https://www.nmc.cn/publish/radar/si-chuan/da-zhou.htm
+      乐山: https://www.nmc.cn/publish/radar/si-chuan/le-shan.htm
+      康定: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/sichuan/kangding/index.html
+      雅安: https://www.nmc.cn/publish/radar/si-chuan/ya-an.htm
+    贵州:
+      贵阳: https://www.nmc.cn/publish/radar/gui-zhou/gui-yang.htm
+      遵义: https://www.nmc.cn/publish/radar/gui-zhou/zun-yi.htm
+      铜仁: https://www.nmc.cn/publish/radar/gui-zhou/tong-ren.htm
+      兴义: https://www.nmc.cn/publish/radar/gui-zhou/xing-yi.htm
+      毕节: https://www.nmc.cn/publish/radar/gui-zhou/bi-jie.htm
+      黔东南: https://www.nmc.cn/publish/radar/gui-zhou/qian-dong-nan.htm
+      都匀: https://www.nmc.cn/publish/radar/gui-zhou/dou-yun.htm
+      六盘水: https://www.nmc.cn/publish/radar/gui-zhou/liu-pan-shui.htm
+      榕江: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/rong-jiang.html
+      习水: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/xi-shui.html
+      务川: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/guizhou/wu-chuan.html
+    云南:
+      曲靖: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/qujing/index.html
+      红河哈尼族彝族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/honghehanizuyizuzizhizhou/index.html
+      昆明: https://www.nmc.cn/publish/radar/yun-nan/kun-ming.htm
+      德宏: https://www.nmc.cn/publish/radar/yun-nan/de-hong.htm
+      昭通: https://www.nmc.cn/publish/radar/yun-nan/zhao-tong.htm
+      文山: https://www.nmc.cn/publish/radar/yun-nan/wen-shan.htm
+      思茅: https://www.nmc.cn/publish/radar/yun-nan/si-mao.htm
+      丽江: https://www.nmc.cn/publish/radar/yun-nan/li-jiang.htm
+      大理: https://www.nmc.cn/publish/radar/yun-nan/da-li.htm
+      西双版纳傣族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/xishuangbannadaizuzizhizhou/index.html
+      临沧: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/lincang/index.html
+      怒江: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/yunnan/nujiang/index.html
+    西藏:
+      拉萨: https://www.nmc.cn/publish/radar/xi-cang/la-sa.htm
+      林芝: https://www.nmc.cn/publish/radar/xi-cang/lin-zhi.htm
+      日喀则: https://www.nmc.cn/publish/radar/xi-cang/ri-ka-ze.htm
+      那曲: https://www.nmc.cn/publish/radar/xi-cang/na-qu.htm
+    西北: https://www.nmc.cn/publish/radar/xibei.html
+    陕西:
+      西安: https://www.nmc.cn/publish/radar/shan-xi/xi-an.htm
+      榆林: https://www.nmc.cn/publish/radar/shan-xi/yu-lin.htm
+      安康: https://www.nmc.cn/publish/radar/shan-xi/an-kang.htm
+      延安: https://www.nmc.cn/publish/radar/shan-xi/yan-an.htm
+      汉中: https://www.nmc.cn/publish/radar/shan-xi/han-zhong.htm
+      宝鸡: https://www.nmc.cn/publish/radar/shan-xi/bao-ji.htm
+      商洛: https://www.nmc.cn/publish/radar/shan-xi/shang-luo.htm
+      渭南: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/weinan/index.html
+      定边: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/shanxi/dingbian/index.html
+    甘肃:
+      兰州: https://www.nmc.cn/publish/radar/gan-su/lan-zhou.htm
+      临夏: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/linxia/index.html
+      西峰: https://www.nmc.cn/publish/radar/gan-su/xi-feng.htm
+      张掖: https://www.nmc.cn/publish/radar/gan-su/zhang-ye.htm
+      天水: https://www.nmc.cn/publish/radar/gan-su/tian-shui.htm
+      嘉峪关: https://www.nmc.cn/publish/radar/gan-su/jia-yu-guan.htm
+      甘南: https://www.nmc.cn/publish/radar/gan-su/gan-nan.htm
+      陇南: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/longnan/index.html
+      定西: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/gansu/dingxi/index.html
+    青海:
+      西宁: https://www.nmc.cn/publish/radar/qing-hai/xi-ning.htm
+      海北: https://www.nmc.cn/publish/radar/qing-hai/hai-bei.htm
+      海南州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/hainan/index.html
+      玉树藏族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/yushucangzuzizhizhou/index.html
+      黄南藏族自治州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/qinghai/huangnancangzuzizhizhou/index.html
+    宁夏:
+      银川: https://www.nmc.cn/publish/radar/ning-xia/yin-chuan.htm
+      固原: https://www.nmc.cn/publish/radar/ning-xia/gu-yuan.htm
+      吴忠: https://www.nmc.cn/publish/radar/ning-xia/wu-zhong.htm
+    新疆:
+      塔城: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/tacheng/index.html
+      巴里坤: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/balikun/index.html
+      乌鲁木齐: https://www.nmc.cn/publish/radar/xin-jiang/wu-lu-mu-qi.htm
+      克拉玛依: https://www.nmc.cn/publish/radar/xin-jiang/ke-la-ma-yi.htm
+      库尔勒: https://www.nmc.cn/publish/radar/xin-jiang/ku-er-le.htm
+      阿克苏: https://www.nmc.cn/publish/radar/xin-jiang/a-ke-su.htm
+      伊宁: https://www.nmc.cn/publish/radar/xin-jiang/yi-ning.htm
+      石河子: https://www.nmc.cn/publish/radar/xin-jiang/shi-he-zi.htm
+      喀什: https://www.nmc.cn/publish/radar/xin-jiang/ka-shen.htm
+      奎屯: https://www.nmc.cn/publish/radar/xin-jiang/kui-tun.htm
+      和田: https://www.nmc.cn/publish/radar/xin-jiang/he-tian.htm
+      五家渠: https://www.nmc.cn/publish/radar/xin-jiang/wu-jia-qu.htm
+      图木舒克: https://www.nmc.cn/publish/radar/xin-jiang/tu-mu-shu-ke.htm
+      塔斯尔海: https://www.nmc.cn/publish/radar/xin-jiang/si-ta-er-hai.htm
+      哈密: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/hami/index.html
+      精河: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/jinghe/index.html
+      伊州: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/yizhou/index.html
+      阿勒泰: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/aletai/index.html
+      奇台: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/qitai/index.html
+      阿拉尔: https://www.nmc.cn/publish/radar/xin-jiang/a-la-er.htm
+      新源: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/xinyuan/index.html
+      哈密伊州区: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/hamiyizhouqu/index.html
+      铁门关: https://www.nmc.cn/publish/tianqishikuang/leidatu/danzhanleida/xinjiang/tiemenguan/index.html
+  降水量:
+    1小时降水量: https://www.nmc.cn/publish/observations/hourly-precipitation.html
+    6小时降水量: https://www.nmc.cn/publish/observations/6hour-precipitation.html
+    24小时降水量: https://www.nmc.cn/publish/observations/24hour-precipitation.html
+    近10天降水量: https://www.nmc.cn/publish/observations/precipitation-10day.html
+    近20天降水量: https://www.nmc.cn/publish/observations/precipitation-20day.html
+    近30天降水量: https://www.nmc.cn/publish/observations/precipitation-30day.html
+    近10天降水距平: https://www.nmc.cn/publish/observations/precipitation-10pa.html
+    近20天降水距平: https://www.nmc.cn/publish/observations/precipitation-20pa.html
+    近30天降水距平: https://www.nmc.cn/publish/observations/precipitation-30pa.html
+  气温:
+    逐时气温: https://www.nmc.cn/publish/observations/hourly-temperature.html
+    日平均气温: https://www.nmc.cn/publish/observations/day-temperature/avg.html
+    日最高气温: https://www.nmc.cn/publish/observations/day-temperature/max.html
+    日最低气温: https://www.nmc.cn/publish/observations/day-temperature/min.html
+    近10天最高气温: https://www.nmc.cn/publish/observations/high-10days.html
+    近20天最高气温: https://www.nmc.cn/publish/observations/high-20days.html
+    近30天最高气温: https://www.nmc.cn/publish/observations/high-30days.html
+    近10天最低气温: https://www.nmc.cn/publish/observations/low-10days.html
+    近20天最低气温: https://www.nmc.cn/publish/observations/low-20days.html
+    近30天最低气温: https://www.nmc.cn/publish/observations/low-30days.html
+    近10天气温距平: https://www.nmc.cn/publish/observations/mta-10days.html
+    近20天气温距平: https://www.nmc.cn/publish/observations/mta-20days.html
+    近30天气温距平: https://www.nmc.cn/publish/observations/mta-30days.html
+  风: https://www.nmc.cn/publish/observations/hourly-winds.html
+  能见度: https://www.nmc.cn/publish/sea/seaplatform1.html
+  强对流:
+    雷电: https://www.nmc.cn/publish/observations/lighting.html
+    短时强降雨: https://www.nmc.cn/publish/observations/heavyrain.html
+    雷暴大风: https://www.nmc.cn/publish/observations/gale.html
+    冰雹: https://www.nmc.cn/publish/observations/hail.html
+  土壤水分:
+    10厘米: https://www.nmc.cn/publish/soil-moisture/10cm.html
+    20厘米: https://www.nmc.cn/publish/soil-moisture/20cm.html
+    30厘米: https://www.nmc.cn/publish/soil-moisture/30cm.html
+    40厘米: https://www.nmc.cn/publish/soil-moisture/40cm.html
+    50厘米: https://www.nmc.cn/publish/soil-moisture/50cm.html
+天气预报:
+  降水量预报:
+    6小时降水量预报: https://www.nmc.cn/publish/precipitation/6hours-6.html
+    24小时降水量预报: https://www.nmc.cn/publish/precipitation/1-day.html
+    亚洲降水量预报: https://www.nmc.cn/publish/bulletin/asia_24h.html
+    欧洲降水量预报: https://www.nmc.cn/publish/bulletin/europe_24h.html
+    北美洲降水量预报: https://www.nmc.cn/publish/bulletin/americas_24h.html
+    大洋洲降水量预报: https://www.nmc.cn/publish/bulletin/oceania_24h.html
+    非洲降水量预报: https://www.nmc.cn/publish/tianqiyubao/guowaitianqiyubao/feizhou/24xiaoshi/index.html
+    南美洲降水量预报: https://www.nmc.cn/publish/tianqiyubao/quanqiutianqiyubao/nanmeizhou/24xiaoshi/index.html
+  气温预报:
+    最高气温预报: https://www.nmc.cn/publish/temperature/hight/24hour.html
+    最低气温预报: https://www.nmc.cn/publish/temperature/low/24hour.html
+    高温落区预报: https://www.nmc.cn/publish/temperature/hight/high-temperature-drop-zone/24hour.htm
+    冷空气降温预报: https://www.nmc.cn/publish/severeweather/temperaturedrop.htm
+  大风预报: https://www.nmc.cn/publish/wind/24h.html
+  强对流概率预报:
+    短时强降水预报: https://www.nmc.cn/publish/swpc/probability/short-term-precipitation-probability-forecast.htm
+    冰雹预报: https://www.nmc.cn/publish/swpc/probability/hail-probability-forecast.htm
+    雷暴大风预报: https://www.nmc.cn/publish/swpc/probability/thunderstorm-winds-probability-forecast.htm
+台风海洋:
+  台风路径预报: https://www.nmc.cn/publish/typhoon/probability-img1.html
+  近岸海雾预报: https://www.nmc.cn/publish/taifenghaiyang/jinhaihaiwuyubao/index.html
+  海区风力预报: https://www.nmc.cn/publish/taifenghaiyang/haiqufengliyubao/index.html
+  北太平洋: https://www.nmc.cn/publish/marine/h000.html
+  北太平洋明日预报: https://www.nmc.cn/publish/marine/day1-h000.html
+  北太平洋后日预报: https://www.nmc.cn/publish/marine/day2-h000.html
+~全球预报:
+  雨雪落区:
+    亚洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html
+    欧洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/ouzhou/24xiaoshi/index.html
+    北美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/beimeizhou/24xiaoshi/index.html
+    大洋洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/dayangzhou/24xiaoshi/index.html
+    非洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/feizhou/24xiaoshi/index.html
+    南美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/nanmeizhou/24xiaoshi/index.html
+环境气象:
+  雾预报: https://www.nmc.cn/publish/fog.html
+  霾预报: https://www.nmc.cn/publish/haze.html
+  沙尘预报: https://www.nmc.cn/publish/severeweather/dust.html
+  空气污染预报: https://www.nmc.cn/publish/environment/air_pollution-24.html
+农业气象:
+  土壤水分:
+    10厘米: https://www.nmc.cn/publish/agro/soil-moisture-monitoring-10cm.html
+    20厘米: https://www.nmc.cn/publish/agro/soil-moisture-monitoring-20cm.html
+    30厘米: https://www.nmc.cn/publish/agro/soil-moisture-monitoring-30cm.html
+    40厘米: https://www.nmc.cn/publish/agro/soil-moisture-monitoring-40cm.html
+    50厘米: https://www.nmc.cn/publish/agro/soil-moisture-monitoring-50cm.html
+  农业干旱: https://www.nmc.cn/publish/agro/disastersmonitoring/Agricultural_Drought_Monitoring.htm
+  作物发育期:
+    大豆: https://www.nmc.cn/publish/agro/information/soybean.html
+    马铃薯: https://www.nmc.cn/publish/agro/information/potato.html
+    夏玉米: https://www.nmc.cn/publish/agro/information/summer-corn.html
+    春小麦: https://www.nmc.cn/publish/agro/information/spring-wheat.html
+    棉花: https://www.nmc.cn/publish/agro/information/cotton.html
+    早稻: https://www.nmc.cn/publish/agro/information/earlyrice.html
+    晚稻: https://www.nmc.cn/publish/agro/information/laterice.html
+    春玉米: https://www.nmc.cn/publish/agro/information/spring-corn.html
+    一季稻: https://www.nmc.cn/publish/agro/information/rice-quarter.html
+# TODO: 数值预报
