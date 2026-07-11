@@ -12,6 +12,8 @@ commands:
       fps: 帧率
       loop: 循环次数
     messages:
-      unknown: 未知雷达站名称，可使用 radar.list 查看所有雷达站。
+      unknown: '{0}：未知雷达站名称，可使用 radar.list 查看所有雷达站。'
   radar.list:
-    description: 查看所有雷达站
+    description: 查看区域内所有雷达站
+    messages:
+      unknown: '{0}：未知区域。'

@@ -1,13 +1,15 @@
 import type { Awaitable, Context, Dict } from 'koishi'
 import { Buffer } from 'node:buffer'
-import { access, mkdir, unlink, writeFile } from 'node:fs/promises'
+import { createWriteStream } from 'node:fs'
+import { access, mkdir, unlink } from 'node:fs/promises'
 import path from 'node:path'
+import { pipeline } from 'node:stream/promises'
 import { pathToFileURL } from 'node:url'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
 import {} from 'koishi-plugin-ffmpeg'
 import zhCN from '../locales/zh-CN.yml'
-import radars from './radars.json'
+import nestedRadars from './radars.yml'
 
 export const name = 'nmc-radar'
 export const inject = {
@@ -33,8 +35,25 @@ export const Config: Schema<Config> = Schema.object({
   defaultResolver: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
 })
 
+interface NestedMap { [key: string]: string | NestedMap }
+
 export function apply(ctx: Context, config: Config) {
   ctx.i18n.define('zh-CN', zhCN)
+
+  const radarMap = new Map<string, string>()
+  const regionMap = new Map<string, NestedMap>()
+  function traverse(radars: NestedMap) {
+    for (const name in radars) {
+      if (typeof radars[name] === 'string') {
+        radarMap.set(name, radars[name])
+      }
+      else {
+        regionMap.set(name, radars[name])
+        traverse(radars[name])
+      }
+    }
+  }
+  traverse({ 全国: nestedRadars })
 
   const command = ctx.command('radar <name:string>')
     .option('name', '--name <name:string>')
@@ -45,9 +64,9 @@ export function apply(ctx: Context, config: Config) {
     .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
-      if (!(name in radars))
-        return void session?.send(session.text('.unknown'))
-      const url = radars[options.name as keyof typeof radars]
+      const url = radarMap.get(options.name)
+      if (!url)
+        return void await session?.send(session.text('.unknown', [options.name]))
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
 
@@ -81,16 +100,16 @@ export function apply(ctx: Context, config: Config) {
         await mkdir(baseDir, { recursive: true })
         const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
           const filePath = path.join(baseDir, `${slug}.png`)
-          try {
-            await access(filePath)
-          }
-          catch {
+          // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+          try { await access(filePath) } catch {
             try {
               const response = await ctx.http.get(url, { responseType: 'stream' })
-              await writeFile(filePath, response)
+              await pipeline(response, createWriteStream(filePath))
             }
             catch {
-              return void await unlink(filePath)
+              // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+              try { await unlink(filePath) } catch {}
+              return
             }
           }
           return filePath
@@ -118,6 +137,15 @@ export function apply(ctx: Context, config: Config) {
     }
   })
 
-  command.subcommand('.list')
-    .action(() => Object.keys(radars).join(' '))
+  command.subcommand('.list [name:string]')
+    .action(({ session }, name = '全国') => {
+      const region = regionMap.get(name)
+      if (!region)
+        return session?.text('.unknown', [name])
+      return `${name}: ${Object.entries(region)
+        .map(([name, value]) => typeof value === 'string'
+          ? h('inlinecmd', { text: `radar ${name}`, enter: true }, h.text(name))
+          : h('inlinecmd', { text: `radar.list ${name}`, enter: true }, h('b', name)))
+        .join(' ')}`
+    })
 }
