@@ -157,7 +157,8 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
     catch {
       await mkdir(baseDir, { recursive: true })
       const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
-        const filePath = path.join(baseDir, `${slug}.png`)
+        const extension = url.match(/\.(jpg|png)/)?.[0] || ''
+        const filePath = path.join(baseDir, `${slug}${extension}`)
         // eslint-disable-next-line style/max-statements-per-line, style/brace-style
         try { await access(filePath) } catch {
           try {
