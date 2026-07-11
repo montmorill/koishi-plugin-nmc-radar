@@ -16,6 +16,20 @@ export const inject = {
   optional: ['ffmpeg'],
 }
 
+export interface Config {
+  default: keyof typeof composers
+  root: string
+  nodata: string
+}
+
+export const Config: Schema<Config> = Schema.object({
+  default: Schema.string().default('img').description('默认输出类型。'),
+  root: Schema.string().default('中央气象台').description('根区域。'),
+  nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
+})
+
+interface StringTree { [key: string]: string | StringTree }
+
 interface Product {
   url: string
   slug: string
@@ -32,86 +46,11 @@ function makeProduct(url: string, time: string) {
 }
 
 type Composer = (products: Product[], options: Dict) => Awaitable<h>
+
 const composers: Record<string, Composer> = {
   img: products => h(h.Fragment, ...products.map(({ url }) => h.img(url))),
   url: products => h.text(products.map(({ url }) => url).join('\n')),
 }
-
-function video(ctx: Context, format: string, video: (url: string) => h): Composer {
-  return async (products, options) => {
-    if (products.length === 1)
-      return h.img(products[0].url)
-
-    options.fps ??= products.length > 10 ? 8 : 2
-
-    const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
-    const outputPath = path.join(baseDir, [
-      `${products[0].slug}...${products[products.length - 1].slug}`,
-      `#${options.fps}@${options.plays}.${format}`,
-    ].join(''))
-
-    try {
-      await access(outputPath)
-    }
-    catch {
-      await mkdir(baseDir, { recursive: true })
-      const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
-        const filePath = path.join(baseDir, `${slug}.png`)
-        // eslint-disable-next-line style/max-statements-per-line, style/brace-style
-        try { await access(filePath) } catch {
-          try {
-            const response = await ctx.http.get(url, { responseType: 'stream' })
-            await pipeline(response, createWriteStream(filePath))
-          }
-          catch {
-            // eslint-disable-next-line style/max-statements-per-line, style/brace-style
-            try { await unlink(filePath) } catch {}
-            return
-          }
-        }
-        return filePath
-      }))
-
-      const buffer = filePaths.filter(Boolean).flatMap(filePath =>
-        `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
-
-      // eslint-disable-next-line style/multiline-ternary
-      options.loop = options.plays === 0 ? 0
-        : options.plays === 1 ? -1 : options.plays - 1
-
-      await ctx.ffmpeg.builder()
-        .input(Buffer.from(buffer))
-        .inputOption('-f', 'concat')
-        .inputOption('-safe', '0')
-        .inputOption('-protocol_whitelist', 'file,fd')
-        .inputOption('-r', options.fps)
-        .outputOption('-loop', options.loop)
-        .outputOption('-plays', options.plays)
-        .outputOption('-filter_complex', [
-          '[0:v]split[out1][out2]',
-          '[out1]palettegen[p]',
-          '[out2][p]paletteuse',
-        ].join(';'))
-        .run('file', outputPath)
-    }
-
-    return video(pathToFileURL(outputPath).href)
-  }
-}
-
-export interface Config {
-  default: keyof typeof composers
-  root: string
-  nodata: string
-}
-
-export const Config: Schema<Config> = Schema.object({
-  default: Schema.union(Object.keys(composers)).default('img').description('默认输出类型。'),
-  root: Schema.string().default('中央气象台').description('根区域。'),
-  nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
-})
-
-interface StringTree { [key: string]: string | StringTree }
 
 export function apply(ctx: Context, config: Config) {
   ctx.i18n.define('zh-CN', zhCN)
@@ -185,16 +124,78 @@ export function apply(ctx: Context, config: Config) {
       const values = Object.entries(region).flatMap(formatEntry)
       return `${name}: ${values.join(' ')}`
     })
+}
 
-  function formatEntry([name, value]: [string, string | StringTree]): h[] {
-    const isRadar = typeof value === 'string'
-    if (!isRadar && name.startsWith('$'))
-      return Object.entries(value).flatMap(formatEntry)
-    if (name.startsWith('^'))
-      name = name.slice(1)
-    return [h('inlinecmd', {
-      text: `${isRadar ? 'radar' : 'radar.list'} ${name}`,
-      enter: true,
-    }, isRadar ? h.text(name) : h('b', name))]
+function formatEntry([name, value]: [string, string | StringTree]): h[] {
+  const isRadar = typeof value === 'string'
+  if (!isRadar && name.startsWith('$'))
+    return Object.entries(value).flatMap(formatEntry)
+  if (name.startsWith('^'))
+    name = name.slice(1)
+  return [h('inlinecmd', {
+    text: `${isRadar ? 'radar' : 'radar.list'} ${name}`,
+    enter: true,
+  }, isRadar ? h.text(name) : h('b', name))]
+}
+
+function video(ctx: Context, format: string, video: (url: string) => h): Composer {
+  return async (products, options) => {
+    if (products.length === 1)
+      return h.img(products[0].url)
+
+    options.fps ??= products.length > 10 ? 8 : 2
+
+    const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
+    const outputPath = path.join(baseDir, [
+      `${products[0].slug}...${products[products.length - 1].slug}`,
+      `#${options.fps}@${options.plays}.${format}`,
+    ].join(''))
+
+    try {
+      await access(outputPath)
+    }
+    catch {
+      await mkdir(baseDir, { recursive: true })
+      const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
+        const filePath = path.join(baseDir, `${slug}.png`)
+        // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+        try { await access(filePath) } catch {
+          try {
+            const response = await ctx.http.get(url, { responseType: 'stream' })
+            await pipeline(response, createWriteStream(filePath))
+          }
+          catch {
+            // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+            try { await unlink(filePath) } catch {}
+            return
+          }
+        }
+        return filePath
+      }))
+
+      const buffer = filePaths.filter(Boolean).flatMap(filePath =>
+        `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
+
+      // eslint-disable-next-line style/multiline-ternary
+      options.loop = options.plays === 0 ? 0
+        : options.plays === 1 ? -1 : options.plays - 1
+
+      await ctx.ffmpeg.builder()
+        .input(Buffer.from(buffer))
+        .inputOption('-f', 'concat')
+        .inputOption('-safe', '0')
+        .inputOption('-protocol_whitelist', 'file,fd')
+        .inputOption('-r', options.fps)
+        .outputOption('-loop', options.loop)
+        .outputOption('-plays', options.plays)
+        .outputOption('-filter_complex', [
+          '[0:v]split[out1][out2]',
+          '[out1]palettegen[p]',
+          '[out2][p]paletteuse',
+        ].join(';'))
+        .run('file', outputPath)
+    }
+
+    return video(pathToFileURL(outputPath).href)
   }
 }
