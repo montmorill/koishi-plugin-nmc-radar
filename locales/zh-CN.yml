@@ -1,8 +1,8 @@
 commands:
   radar:
-    description: 查看雷达图
+    description: 查看气象图
     options:
-      name: 雷达站名称
+      name: 图名
       count: 最大输出数量
       reverse: 反转顺序
       type: 输出类型
@@ -12,8 +12,8 @@ commands:
       fps: 帧率
       loop: 循环次数
     messages:
-      unknown: '{0}：未知雷达站名称，可使用 radar.list 查看所有雷达站。'
+      unknown: '{0}：未知气象图名，可使用 radar.list 查看所有气象图。'
   radar.list:
-    description: 查看区域内所有雷达站
+    description: 查看图组内所有气象图
     messages:
-      unknown: '{0}：未知区域。'
+      unknown: '{0}：未知图组名。'
