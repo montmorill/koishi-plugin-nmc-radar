@@ -177,24 +177,26 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
       const buffer = filePaths.filter(Boolean).flatMap(filePath =>
         `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
 
-      // eslint-disable-next-line style/multiline-ternary
-      options.loop = options.plays === 0 ? 0
-        : options.plays === 1 ? -1 : options.plays - 1
-
       const builder = ctx.ffmpeg.builder()
         .input(Buffer.from(buffer))
         .inputOption('-f', 'concat')
         .inputOption('-safe', '0')
         .inputOption('-protocol_whitelist', 'file,fd')
         .inputOption('-r', options.fps)
-        .outputOption('-loop', options.loop)
         .outputOption('-plays', options.plays)
 
-      format === 'gif' && builder.outputOption('-filter_complex', [
-        '[0:v]split[out1][out2]',
-        '[out1]palettegen[p]',
-        '[out2][p]paletteuse',
-      ].join(';'))
+      if (format === 'gif') {
+        // eslint-disable-next-line style/multiline-ternary
+        options.loop = options.plays === 0 ? 0
+          : options.plays === 1 ? -1 : options.plays - 1
+        builder
+          .outputOption('-loop', options.loop)
+          .outputOption('-filter_complex', [
+            '[0:v]split[out1][out2]',
+            '[out1]palettegen[p]',
+            '[out2][p]paletteuse',
+          ].join(';'))
+      }
 
       await builder.run('file', outputPath)
     }
