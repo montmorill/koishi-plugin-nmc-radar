@@ -27,20 +27,75 @@ function makeProduct(name: string, url: string, time: string) {
   return { url, slug }
 }
 
-type Resolver = (products: Product[], options: Dict) => Awaitable<h>
-const resolvers: Record<string, Resolver> = {
+type Composer = (products: Product[], options: Dict) => Awaitable<h>
+const composers: Record<string, Composer> = {
   img: products => h(h.Fragment, ...products.map(({ url }) => h.img(url))),
   url: products => h.text(products.map(({ url }) => url).join('\n')),
 }
 
+function video(ctx: Context, format: string, video: (url: string) => h): Composer {
+  return async (products, options) => {
+    if (products.length === 1)
+      return h.img(products[0].url)
+
+    const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
+    const outputPath = path.join(baseDir, [
+      `${products[0].slug}+${products[products.length - 1].slug}`,
+      `#${options.fps}@${options.loop}.${format}`,
+    ].join(''))
+
+    try {
+      await access(outputPath)
+    }
+    catch {
+      await mkdir(baseDir, { recursive: true })
+      const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
+        const filePath = path.join(baseDir, `${slug}.png`)
+        // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+        try { await access(filePath) } catch {
+          try {
+            const response = await ctx.http.get(url, { responseType: 'stream' })
+            await pipeline(response, createWriteStream(filePath))
+          }
+          catch {
+            // eslint-disable-next-line style/max-statements-per-line, style/brace-style
+            try { await unlink(filePath) } catch {}
+            return
+          }
+        }
+        return filePath
+      }))
+
+      const buffer = filePaths.filter(Boolean).flatMap(filePath =>
+        `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
+
+      await ctx.ffmpeg.builder()
+        .input(Buffer.from(buffer))
+        .inputOption('-f', 'concat')
+        .inputOption('-safe', '0')
+        .inputOption('-protocol_whitelist', 'file,fd')
+        .inputOption('-r', options.fps)
+        .outputOption('-loop', options.loop)
+        .outputOption('-filter_complex', [
+          '[0:v]split[out1][out2]',
+          '[out1]palettegen[p]',
+          '[out2][p]paletteuse',
+        ].join(';'))
+        .run('file', outputPath)
+    }
+
+    return video(pathToFileURL(outputPath).href)
+  }
+}
+
 export interface Config {
-  default: keyof typeof resolvers
+  default: keyof typeof composers
   root: string
   nodata: string
 }
 
 export const Config: Schema<Config> = Schema.object({
-  default: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
+  default: Schema.union(Object.keys(composers)).default('img').description('默认输出类型。'),
   root: Schema.string().default('中央气象台').description('根区域。'),
   nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
 })
@@ -70,7 +125,7 @@ export function apply(ctx: Context, config: Config) {
     .option('name', '--name <name:string>')
     .option('count', '-n <count:posint>')
     .option('reverse', '-R')
-    .option('type', '--type <type:string>', { type: Object.keys(resolvers) })
+    .option('type', '--type <type:string>', { type: Object.keys(composers) })
     .option('type', '--img', { value: 'img' })
     .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
@@ -90,69 +145,21 @@ export function apply(ctx: Context, config: Config) {
       products = products.slice(0, options.count)
       options.reverse || products.reverse()
 
-      const resolver = resolvers[options.type]
+      const composer = composers[options.type]
       Object.assign(options, { session })
-      return await resolver(products, options)
+      return await composer(products, options)
     })
 
   ctx.inject(['ffmpeg'], async (ctx) => {
     command
       .option('type', '--gif', { value: 'gif' })
+      .option('type', '--mp4', { value: 'mp4' })
+      .option('type', '--apng', { value: 'apng' })
       .option('fps', '--fps <fps:number>', { fallback: 10 })
       .option('loop', '--loop <loop:number>', { fallback: -1 })
-
-    resolvers.gif = async (products, options) => {
-      if (products.length === 1)
-        return h.img(products[0].url)
-
-      const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
-      const outputPath = path.join(baseDir, [
-        `${products[0].slug}+${products[products.length - 1].slug}`,
-        `#${options.fps}@${options.loop}.gif`,
-      ].join(''))
-
-      try {
-        await access(outputPath)
-      }
-      catch {
-        await mkdir(baseDir, { recursive: true })
-        const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
-          const filePath = path.join(baseDir, `${slug}.png`)
-          // eslint-disable-next-line style/max-statements-per-line, style/brace-style
-          try { await access(filePath) } catch {
-            try {
-              const response = await ctx.http.get(url, { responseType: 'stream' })
-              await pipeline(response, createWriteStream(filePath))
-            }
-            catch {
-              // eslint-disable-next-line style/max-statements-per-line, style/brace-style
-              try { await unlink(filePath) } catch {}
-              return
-            }
-          }
-          return filePath
-        }))
-
-        const buffer = filePaths.filter(Boolean).flatMap(filePath =>
-          `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
-
-        await ctx.ffmpeg.builder()
-          .input(Buffer.from(buffer))
-          .inputOption('-f', 'concat')
-          .inputOption('-safe', '0')
-          .inputOption('-protocol_whitelist', 'file,fd')
-          .inputOption('-r', options.fps)
-          .outputOption('-loop', options.loop)
-          .outputOption('-filter_complex', [
-            '[0:v]split[out1][out2]',
-            '[out1]palettegen[p]',
-            '[out2][p]paletteuse',
-          ].join(';'))
-          .run('file', outputPath)
-      }
-
-      return h.img(pathToFileURL(outputPath).href)
-    }
+    composers.gif = video(ctx, 'gif', h.img)
+    composers.apng = video(ctx, 'apng', h.img)
+    composers.mp4 = video(ctx, 'mp4', h.video)
   })
 
   command.subcommand('.list [name:string]')
