@@ -17,32 +17,32 @@ export const inject = {
 }
 
 interface Product {
-  img: string
+  url: string
   slug: string
 }
 
-function makeProduct(name: string, { img, time }: Dict<string>) {
-  img = img.replace('/medium/', '/')
+function makeProduct(name: string, url: string, time: string) {
+  url = url.replace('/medium/', '/')
   const slug = time.replaceAll(/[/ :]/g, '')
-  return { img, slug }
+  return { url, slug }
 }
 
 type Resolver = (products: Product[], options: Dict) => Awaitable<h>
 const resolvers: Record<string, Resolver> = {
-  img: products => h(h.Fragment, ...products.map(({ img }) => h.img(img))),
-  url: products => h.text(products.map(({ img }) => img).join('\n')),
+  img: products => h(h.Fragment, ...products.map(({ url }) => h.img(url))),
+  url: products => h.text(products.map(({ url }) => url).join('\n')),
 }
 
 export interface Config {
+  default: keyof typeof resolvers
   root: string
   nodata: string
-  default: keyof typeof resolvers
 }
 
 export const Config: Schema<Config> = Schema.object({
+  default: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
   root: Schema.string().default('中央气象台').description('根区域。'),
   nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
-  default: Schema.union(Object.keys(resolvers)).default('img').description('默认输出类型。'),
 })
 
 interface StringTree { [key: string]: string | StringTree }
@@ -54,20 +54,14 @@ export function apply(ctx: Context, config: Config) {
   const regionMap = new Map<string, StringTree>()
   function traverse(tree: StringTree) {
     for (const key in tree) {
-      if (key.startsWith('~'))
-        continue
-      const name = key.startsWith('$')
-        ? key.slice(1)
-        : key
-
       const value = tree[key]
-      if (typeof value === 'string') {
-        radarMap.set(name, value)
-      }
-      else {
+      const name = key.startsWith('$') ? key.slice(1) : key
+      if (typeof value !== 'string') {
         regionMap.set(name, value)
         traverse(value)
+        continue
       }
+      radarMap.set(name, value)
     }
   }
   traverse({ [config.root]: nestedRadars })
@@ -85,16 +79,20 @@ export function apply(ctx: Context, config: Config) {
       if (!url)
         return void await session?.send(session.text('.unknown', [options.name]))
       const { window: { document } } = new JSDOM(await ctx.http.get(url))
-      let products = Array.from(document.querySelectorAll<HTMLElement>('div[data-img]'))
-        .map(({ dataset }) => makeProduct(options.name, dataset as Dict))
+      const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
+      let products = Array.from(nodes).map(({ dataset }) =>
+        makeProduct(options.name, dataset.img!, dataset.time!))
       if (products.length === 0)
-        products.push({ img: config.nodata, slug: 'nodata' })
+        products.push({ url: config.nodata, slug: 'nodata' })
 
       options.type ??= config.default
       options.count ??= options.type === 'img' ? 1 : undefined
-      products = Array.from(products).slice(0, options.count)
+      products = products.slice(0, options.count)
       options.reverse || products.reverse()
-      return await resolvers[options.type](products, options)
+
+      const resolver = resolvers[options.type]
+      Object.assign(options, { session })
+      return await resolver(products, options)
     })
 
   ctx.inject(['ffmpeg'], async (ctx) => {
@@ -105,7 +103,7 @@ export function apply(ctx: Context, config: Config) {
 
     resolvers.gif = async (products, options) => {
       if (products.length === 1)
-        return h.img(products[0].img)
+        return h.img(products[0].url)
 
       const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
       const outputPath = path.join(baseDir, [
@@ -118,12 +116,12 @@ export function apply(ctx: Context, config: Config) {
       }
       catch {
         await mkdir(baseDir, { recursive: true })
-        const filePaths = await Promise.all(products.map(async ({ img, slug }) => {
+        const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
           const filePath = path.join(baseDir, `${slug}.png`)
           // eslint-disable-next-line style/max-statements-per-line, style/brace-style
           try { await access(filePath) } catch {
             try {
-              const response = await ctx.http.get(img, { responseType: 'stream' })
+              const response = await ctx.http.get(url, { responseType: 'stream' })
               await pipeline(response, createWriteStream(filePath))
             }
             catch {
@@ -167,8 +165,6 @@ export function apply(ctx: Context, config: Config) {
     })
 
   function formatEntry([name, value]: [string, string | StringTree]): h[] {
-    if (name.startsWith('~'))
-      return []
     const isRadar = typeof value === 'string'
     if (!isRadar && name.startsWith('$'))
       return Object.entries(value).flatMap(formatEntry)

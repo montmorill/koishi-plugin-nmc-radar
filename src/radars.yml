@@ -54,7 +54,7 @@ $天气实况:
       可见光云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-vis.html
     海区红外云图: https://www.nmc.cn/publish/satellite/China_Northwest_Pacific_Ocean.html
     # 台风检测: https://www.nmc.cn/publish/typhoon/fy2c-pj2.html
-  $雷达图:
+  雷达图:
     全国: https://www.nmc.cn/publish/radar/chinaall.html
     华北: https://www.nmc.cn/publish/radar/huabei.html
     北京:
@@ -425,14 +425,14 @@ $天气实况:
   北太平洋: https://www.nmc.cn/publish/marine/h000.html
   北太平洋24小时预报: https://www.nmc.cn/publish/marine/day1-h000.html
   北太平洋48小时预报: https://www.nmc.cn/publish/marine/day2-h000.html
-~全球预报:
-  雨雪落区:
-    亚洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html
-    欧洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/ouzhou/24xiaoshi/index.html
-    北美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/beimeizhou/24xiaoshi/index.html
-    大洋洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/dayangzhou/24xiaoshi/index.html
-    非洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/feizhou/24xiaoshi/index.html
-    南美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/nanmeizhou/24xiaoshi/index.html
+# ~全球预报:
+#   雨雪落区:
+#     亚洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html
+#     欧洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/ouzhou/24xiaoshi/index.html
+#     北美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/beimeizhou/24xiaoshi/index.html
+#     大洋洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/dayangzhou/24xiaoshi/index.html
+#     非洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/feizhou/24xiaoshi/index.html
+#     南美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/nanmeizhou/24xiaoshi/index.html
 环境气象:
   雾预报: https://www.nmc.cn/publish/fog.html
   霾预报: https://www.nmc.cn/publish/haze.html
