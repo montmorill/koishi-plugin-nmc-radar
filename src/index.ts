@@ -41,7 +41,7 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
     const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
     const outputPath = path.join(baseDir, [
       `${products[0].slug}+${products[products.length - 1].slug}`,
-      `#${options.fps}@${options.loop}.${format}`,
+      `#${options.fps}@${options.plays}.${format}`,
     ].join(''))
 
     try {
@@ -69,6 +69,10 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
       const buffer = filePaths.filter(Boolean).flatMap(filePath =>
         `file 'file:${filePath!.replaceAll('\\', '/')}'`).join('\n')
 
+      // eslint-disable-next-line style/multiline-ternary
+      options.loop = options.plays === 0 ? 0
+        : options.plays === 1 ? -1 : options.plays - 1
+
       await ctx.ffmpeg.builder()
         .input(Buffer.from(buffer))
         .inputOption('-f', 'concat')
@@ -76,6 +80,7 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
         .inputOption('-protocol_whitelist', 'file,fd')
         .inputOption('-r', options.fps)
         .outputOption('-loop', options.loop)
+        .outputOption('-plays', options.plays)
         .outputOption('-filter_complex', [
           '[0:v]split[out1][out2]',
           '[out1]palettegen[p]',
@@ -155,8 +160,9 @@ export function apply(ctx: Context, config: Config) {
       .option('type', '--gif', { value: 'gif' })
       .option('type', '--mp4', { value: 'mp4' })
       .option('type', '--apng', { value: 'apng' })
-      .option('fps', '--fps <fps:number>', { fallback: 10 })
-      .option('loop', '--loop <loop:number>', { fallback: -1 })
+      .option('fps', '--fps <fps:posint>', { fallback: 10 })
+      .option('plays', '--plays <plays:natural>', { fallback: 1 })
+      .option('plays', '--loop', { value: 0 })
     composers.gif = video(ctx, 'gif', h.img)
     composers.apng = video(ctx, 'apng', h.img)
     composers.mp4 = video(ctx, 'mp4', h.video)
