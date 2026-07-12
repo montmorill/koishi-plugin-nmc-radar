@@ -1,4 +1,5 @@
 import type { Awaitable, Context, Dict } from 'koishi'
+import type { FFmpegBuilder } from 'koishi-plugin-ffmpeg'
 import { Buffer } from 'node:buffer'
 import { createWriteStream } from 'node:fs'
 import { access, mkdir, unlink } from 'node:fs/promises'
@@ -7,7 +8,6 @@ import { pipeline } from 'node:stream/promises'
 import { pathToFileURL } from 'node:url'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
-import {} from 'koishi-plugin-ffmpeg'
 import zhCN from '../locales/zh-CN.yml'
 import nestedRadars from './radars.yml'
 
@@ -106,15 +106,29 @@ export function apply(ctx: Context, config: Config) {
 
   ctx.inject(['ffmpeg'], async (ctx) => {
     command
+      .option('type', '--apng', { value: 'apng' })
       .option('type', '--gif', { value: 'gif' })
       .option('type', '--mp4', { value: 'mp4' })
-      .option('type', '--apng', { value: 'apng' })
       .option('fps', '--fps <fps:posint>')
       .option('plays', '--plays <plays:natural>', { fallback: 1 })
       .option('plays', '--loop', { value: 0 })
-    composers.gif = video(ctx, 'gif', h.img)
+
     composers.apng = video(ctx, 'apng', h.img)
-    composers.mp4 = video(ctx, 'mp4', h.video)
+    composers.gif = video(ctx, 'gif', h.img, (builder, options) => {
+      // eslint-disable-next-line style/multiline-ternary
+      options.loop = options.plays === 0 ? 0
+        : options.plays === 1 ? -1 : options.plays - 1
+      builder
+        .outputOption('-loop', options.loop)
+        .outputOption('-filter_complex', [
+          '[0:v]split[out1][out2]',
+          '[out1]palettegen[p]',
+          '[out2][p]paletteuse',
+        ].join(';'))
+    })
+    composers.mp4 = video(ctx, 'mp4', h.video, (builder) => {
+      builder.outputOption('-vf', 'scale=ceil(iw/2)*2:ceil(ih/2)*2')
+    })
   })
 
   command.subcommand('.list [name:string]')
@@ -141,7 +155,12 @@ function formatEntry([name, value]: [string, string | StringTree]): h[] {
   }, isRadar ? h.text(name) : h('b', name))]
 }
 
-function video(ctx: Context, format: string, video: (url: string) => h): Composer {
+function video(
+  ctx: Context,
+  format: string,
+  video: (url: string) => h,
+  foo?: (builder: FFmpegBuilder, options: Dict) => void,
+): Composer {
   return async (products, options) => {
     if (products.length === 1)
       return h.img(products[0].url)
@@ -185,22 +204,17 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
         .inputOption('-safe', '0')
         .inputOption('-protocol_whitelist', 'file,fd')
         .inputOption('-r', options.fps)
-        .outputOption('-plays', options.plays)
 
-      if (format === 'gif') {
-        // eslint-disable-next-line style/multiline-ternary
-        options.loop = options.plays === 0 ? 0
-          : options.plays === 1 ? -1 : options.plays - 1
-        builder
-          .outputOption('-loop', options.loop)
-          .outputOption('-filter_complex', [
-            '[0:v]split[out1][out2]',
-            '[out1]palettegen[p]',
-            '[out2][p]paletteuse',
-          ].join(';'))
+      foo?.(builder, options)
+
+      try {
+        await builder.run('file', outputPath)
+        return video(pathToFileURL(outputPath).href)
       }
-
-      await builder.run('file', outputPath)
+      catch (error) {
+        await unlink(outputPath)
+        throw error
+      }
     }
 
     return video(pathToFileURL(outputPath).href)
