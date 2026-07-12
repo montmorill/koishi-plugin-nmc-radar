@@ -34,15 +34,13 @@ interface Product {
   url: string
   filename: string
   slug: string
-  time: string
 }
 
 function makeProduct(url: string) {
   url = url.replace('/medium/', '/')
   const filename = new URL(url).pathname.split('/').pop()!
   const slug = filename.replace(/\..+$/, '')
-  const time = slug.split('_').pop()!
-  return { url, slug, filename, time }
+  return { url, slug, filename }
 }
 
 type Composer = (products: Product[], options: Dict) => Awaitable<h>
@@ -66,10 +64,14 @@ export function apply(ctx: Context, config: Config) {
         reverse = !reverse
       const name = /^[$^]/.test(key) ? key.slice(1) : key
       if (typeof value !== 'string') {
+        if (regionMap.has(name) && name !== '土壤水分')
+          ctx.logger.warn(`Duplicate region ${name}`)
         regionMap.set(name, value)
         traverse(value, reverse)
         continue
       }
+      if (radarMap.has(name) && !/[1-5]0厘米/.test(name))
+        ctx.logger.warn(`Duplicate radar ${name}`)
       radarMap.set(name, { url: value, reverse })
     }
   }
@@ -168,10 +170,11 @@ function video(
     options.fps ??= products.length > 10 ? 8 : 2
 
     const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
-    const outputPath = path.join(baseDir, [
-      `${products[0].slug}+${products.pop()!.time}`,
-      `#${options.fps}@${options.plays}.${format}`,
-    ].join(''))
+    const from = products[0].slug // name + time
+    const to = products.pop()!.slug.split('_').pop()! // time
+    const { fps, plays } = options
+    const filename = `${from}...${to}#${fps}@${plays}.${format}`
+    const outputPath = path.join(baseDir, filename)
 
     try {
       await access(outputPath)
