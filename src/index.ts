@@ -32,17 +32,17 @@ interface StringTree { [key: string]: string | StringTree }
 
 interface Product {
   url: string
+  filename: string
   slug: string
+  time: string
 }
 
-function makeProduct(url: string, time: string) {
+function makeProduct(url: string) {
   url = url.replace('/medium/', '/')
-  if (time.length < 10 && time.endsWith('小时'))
-    time = `${url.slice(29, 39)}+${time}` // YYYY/MM/DD
-  const slug = time
-    .replace(/ (\d+)小时/, '+$1')
-    .replaceAll(/[/ :]|小时/g, '')
-  return { url, slug }
+  const filename = new URL(url).pathname.split('/').pop()!
+  const slug = filename.replace(/\..+$/, '')
+  const time = slug.split('_').pop()!
+  return { url, slug, filename, time }
 }
 
 type Composer = (products: Product[], options: Dict) => Awaitable<h>
@@ -66,14 +66,10 @@ export function apply(ctx: Context, config: Config) {
         reverse = !reverse
       const name = /^[$^]/.test(key) ? key.slice(1) : key
       if (typeof value !== 'string') {
-        if (regionMap.has(name) && name !== '土壤水分')
-          throw new Error(`duplicate region: ${name}`)
         regionMap.set(name, value)
         traverse(value, reverse)
         continue
       }
-      if (radarMap.has(name) && !/^[1-5]0厘米$/.test(name))
-        throw new Error(`duplicate radar: ${name}`)
       radarMap.set(name, { url: value, reverse })
     }
   }
@@ -93,10 +89,9 @@ export function apply(ctx: Context, config: Config) {
         return void await session?.send(session.text('.unknown', [options.name]))
       const { window: { document } } = new JSDOM(await ctx.http.get(radar.url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
-      let products = Array.from(nodes).map(({ dataset }) =>
-        makeProduct(dataset.img!, dataset.time!))
+      let products = Array.from(nodes).map(({ dataset }) => makeProduct(dataset.img!))
       if (products.length === 0)
-        products.push({ url: config.nodata, slug: 'nodata' })
+        products.push(makeProduct(config.nodata))
 
       options.type ??= config.default
       options.count ??= options.type === 'img' ? 1 : undefined
@@ -155,7 +150,7 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
 
     const baseDir = path.join(ctx.baseDir, 'cache', name, options.name)
     const outputPath = path.join(baseDir, [
-      `${products[0].slug}...${products[products.length - 1].slug}`,
+      `${products[0].slug}+${products.pop()!.time}`,
       `#${options.fps}@${options.plays}.${format}`,
     ].join(''))
 
@@ -164,9 +159,8 @@ function video(ctx: Context, format: string, video: (url: string) => h): Compose
     }
     catch {
       await mkdir(baseDir, { recursive: true })
-      const filePaths = await Promise.all(products.map(async ({ url, slug }) => {
-        const extension = url.toLowerCase().match(/\.(jpg|png)/)?.[0] || ''
-        const filePath = path.join(baseDir, `${slug}${extension}`)
+      const filePaths = await Promise.all(products.map(async ({ url, filename }) => {
+        const filePath = path.join(baseDir, filename)
         // eslint-disable-next-line style/max-statements-per-line, style/brace-style
         try { await access(filePath) } catch {
           try {
