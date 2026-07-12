@@ -60,14 +60,20 @@ export function apply(ctx: Context, config: Config) {
   function traverse(tree: StringTree, reverse = false) {
     for (const key in tree) {
       const value = tree[key]
+      if (key.startsWith('~'))
+        continue
       if (key.startsWith('^'))
         reverse = !reverse
       const name = /^[$^]/.test(key) ? key.slice(1) : key
       if (typeof value !== 'string') {
+        if (regionMap.has(name) && name !== '土壤水分')
+          throw new Error(`duplicate region: ${name}`)
         regionMap.set(name, value)
         traverse(value, reverse)
         continue
       }
+      if (radarMap.has(name) && !/^[1-5]0厘米$/.test(name))
+        throw new Error(`duplicate radar: ${name}`)
       radarMap.set(name, { url: value, reverse })
     }
   }
@@ -127,6 +133,8 @@ export function apply(ctx: Context, config: Config) {
 }
 
 function formatEntry([name, value]: [string, string | StringTree]): h[] {
+  if (name.startsWith('~'))
+    return []
   const isRadar = typeof value === 'string'
   if (!isRadar && name.startsWith('$'))
     return Object.entries(value).flatMap(formatEntry)

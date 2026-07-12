@@ -53,7 +53,7 @@ $天气实况:
       水汽云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-wv.html
       可见光云盘图: https://www.nmc.cn/publish/satellite/fy2c-disc-vis.html
     海区红外云图: https://www.nmc.cn/publish/satellite/China_Northwest_Pacific_Ocean.html
-    # 台风检测: https://www.nmc.cn/publish/typhoon/fy2c-pj2.html
+    ~台风检测: https://www.nmc.cn/publish/typhoon/fy2c-pj2.html
   雷达图:
     全国: https://www.nmc.cn/publish/radar/chinaall.html
     华北: https://www.nmc.cn/publish/radar/huabei.html
@@ -425,14 +425,14 @@ $天气实况:
   北太平洋: https://www.nmc.cn/publish/marine/h000.html
   北太平洋24小时预报: https://www.nmc.cn/publish/marine/day1-h000.html
   北太平洋48小时预报: https://www.nmc.cn/publish/marine/day2-h000.html
-# ~全球预报:
-#   雨雪落区:
-#     亚洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html
-#     欧洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/ouzhou/24xiaoshi/index.html
-#     北美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/beimeizhou/24xiaoshi/index.html
-#     大洋洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/dayangzhou/24xiaoshi/index.html
-#     非洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/feizhou/24xiaoshi/index.html
-#     南美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/nanmeizhou/24xiaoshi/index.html
+~全球预报:
+  雨雪落区:
+    亚洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/yazhou/24xiaoshi/index.html
+    欧洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/ouzhou/24xiaoshi/index.html
+    北美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/beimeizhou/24xiaoshi/index.html
+    大洋洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/dayangzhou/24xiaoshi/index.html
+    非洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/feizhou/24xiaoshi/index.html
+    南美洲降水量预报: https://www.nmc.cn/publish/quanqiuyubao/quanqiuyuxueluoquyubao/nanmeizhou/24xiaoshi/index.html
 环境气象:
   雾预报: https://www.nmc.cn/publish/fog.html
   霾预报: https://www.nmc.cn/publish/haze.html
@@ -457,23 +457,380 @@ $天气实况:
     春玉米: https://www.nmc.cn/publish/agro/information/spring-corn.html
     一季稻: https://www.nmc.cn/publish/agro/information/rice-quarter.html
 数值预报:
-  北半球:
-    500hPa高度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/500hPa-hgt.htm
-    850hPa温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/850hPa-temp.htm
-    海平面气压: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/sea-level-pressure.htm
-  $亚欧:
-    亚欧高度风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ae/500hPa+hgt+850hPa+wind.htm
-  $东亚:
-    海平面气压场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/slp.htm
-    高度风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/500hPa+hgt+850hPa+wind.htm
-    24小时降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/24hour-rain.htm
-    累计降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/cumulative_precipitation.htm
-    2米温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/t2m.htm
-    2米最高温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMax.htm
-    2米最低温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMin.htm
-    2米相对湿度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/RH2m.htm
-    雷达组合反射率: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/ldzhfsl.htm
-  $全球:
-    $FY4A卫星云图模拟:
-      红外亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/grapes_mswx/11um.htm
-      水汽亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/grapes_mswx/6.8um.htm
+  $CMA全球天气模式: # GFS
+    北半球:
+      500hPa高度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/500hPa-hgt.htm
+      850hPa温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/850hPa-temp.htm
+      海平面气压: https://www.nmc.cn/publish/nwpc/grapes_gfs/nh/sea-level-pressure.htm
+    亚欧:
+      亚欧500hPa高度场+850hPa风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ae/500hPa+hgt+850hPa+wind.htm
+    东亚:
+      海平面气压场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/slp.htm
+      500hPa高度场+850hPa风场: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/500hPa+hgt+850hPa+wind.htm
+      24小时降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/24hour-rain.htm
+      累积降水: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/cumulative_precipitation.htm
+      2米温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/t2m.htm
+      2米最高温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMax.htm
+      2米最低温度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/T2mMin.htm
+      2米相对湿度: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/wind/RH2m.htm
+      雷达组合反射率: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/ldzhfsl.htm
+    $全球:
+      $全球FY4A卫星云图模拟:
+        全球红外亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/ea/grapes_mswx/11um.htm
+        全球水汽亮温: https://www.nmc.cn/publish/nwpc/grapes_gfs/grapes_mswx/6.8um.htm
+  $CMA全球集合模式: # GEPS
+    24h累积降水:
+      24h累积降水概率预报:
+        24h累积降水概率预报1mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/gailvyubao/1mm/index.html
+        24h累积降水概率预报10mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/gailvyubao/10mm/index.html
+        24h累积降水概率预报25mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/gailvyubao/25mm/index.html
+        24h累积降水概率预报50mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/gailvyubao/50mm/index.html
+        24h累积降水概率预报100mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/gailvyubao/100mm/index.html
+      24h累积降水极端预报指数: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/jiduanyubaozhishu/index.html
+      24h累积降水集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/jihepingjunhelisandu/index.html
+      24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/24hleijijiangshui/youpiaotu/index.html
+      $24h累积降水分位数:
+        24h累积降水分位数最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/zuidazhi/fenweishuchanpin/24hleijijiangshui/index.html
+    500hPa位势高度:
+      500hPa位势高度面条图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/500hPaweishigaodu/miantiaotu/index.html
+      500hPa位势高度集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/500hPaweishigaodu/jihepingjunhelisandu/index.html
+    2m温度:
+      2m温度极端预报指数: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/2miwendu/jiduanyubaozhishu/index.html
+      2m温度集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/2miwendu/jihepingjunhelisandu/index.html
+    10m全风速:
+      10m全风速极端预报指数: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/10miquanfengsu/jiduanyubaozhishu/index.html
+      10m全风速集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/10miquanfengsu/jihepingjunhelisandu/index.html
+      10m全风速概率预报:
+        10m全风速概率预报10.8m/s: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/10miquanfengsu/gailvyubao/10.8/index.html
+        10m全风速概率预报17.2m/s: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquanqiujiheyubao_new/10miquanfengsu/gailvyubao/17.2/index.html
+  CMA区域模式: # MESO
+    全国MESO:
+      全国500hPa高度+850风场+850大风速: https://www.nmc.cn/publish/area/china/hws.html
+      全国500高度+海平面气压: https://www.nmc.cn/publish/area/china/h500p.html
+      全国10m风: https://www.nmc.cn/publish/area/china/10mws.html
+      全国24H降水预报: https://www.nmc.cn/publish/area/china/24hrain.html
+      全国2m温度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyumoshi/quanguo/2mwendu/index.html
+      全国雷达组合反射率: https://www.nmc.cn/publish/area/china/radar.html
+    华北MESO:
+      华北1h降水+10m风场: https://www.nmc.cn/publish/area/hs/1h10mw.html
+      华北3h降水+10m风场: https://www.nmc.cn/publish/area/hs/3h10mw.html
+      华北6h降水+10m风场: https://www.nmc.cn/publish/area/hs/6h10mw.html
+      华北12h降水+10m风场: https://www.nmc.cn/publish/area/hs/12h10mw.html
+      华北雷达组合反射率: https://www.nmc.cn/publish/area/hs/radar.html
+    华南MESO:
+      华南1h降水+10m风场: https://www.nmc.cn/publish/area/hn/1h10mwind.html
+      华南3h降水+10m风场: https://www.nmc.cn/publish/area/hn/3h10mwind.html
+      华南6h降水+10m风场: https://www.nmc.cn/publish/area/hn/6h10mwind.html
+      华南12h降水+10m风场: https://www.nmc.cn/publish/area/hn/12h10mwind.html
+      华南雷达组合反射率: https://www.nmc.cn/publish/area/hn/radar.html
+    西南MESO:
+      西南1h降水+10m风场: https://www.nmc.cn/publish/area/wne/1h10mw.html
+      西南3h降水+10m风场: https://www.nmc.cn/publish/area/wne/3h10mw.html
+      西南6h降水+10m风场: https://www.nmc.cn/publish/area/wne/6h10mw.html
+      西南12h降水+10m风场: https://www.nmc.cn/publish/area/wne/12h10mw.html
+      西南雷达组合反射率: https://www.nmc.cn/publish/area/wne/radar.html
+    西北MESO:
+      西北1h降水+10m风场: https://www.nmc.cn/publish/area/wse/1hr10mw.html
+      西北3h降水+10m风场: https://www.nmc.cn/publish/area/wse/3h10mw.html
+      西北6h降水+10m风场: https://www.nmc.cn/publish/area/wse/6h10mw.html
+      西北12h降水+10m风场: https://www.nmc.cn/publish/area/wse/12h10mw.html
+      西北雷达组合反射率: https://www.nmc.cn/publish/area/wse/radar.html
+    东北MESO:
+      东北1h降水+10m风场: https://www.nmc.cn/publish/area/es/1hrain10mw.html
+      东北3h降水+10m风场: https://www.nmc.cn/publish/area/es/3h10mw.html
+      东北6h降水+10m风场: https://www.nmc.cn/publish/area/es/6h10mw.html
+      东北12h降水+10m风场: https://www.nmc.cn/publish/area/es/12h10mw.html
+      东北雷达组合反射率: https://www.nmc.cn/publish/area/es/radar.html
+    华中MESO:
+      华中1h降水+10m风场: https://www.nmc.cn/publish/area/huazhong/1hrain10mwindfield.html
+      华中3h降水+10m风场: https://www.nmc.cn/publish/area/huazhong/3_h_precipitation_+_10_meters_wind_field.html
+      华中6h降水+10m风场: https://www.nmc.cn/publish/area/huazhong/6_h_precipitation_+_10_meters_wind_field.html
+      华中12h降水+10m风场: https://www.nmc.cn/publish/area/huazhong/12_h_precipitation_+_10_meters_wind_field.html
+      华中雷达组合反射率: https://www.nmc.cn/publish/area/huazhong/The_combination_of_radar_reflectivity.html
+    西藏MESO:
+      西藏1h降水+10m风场: https://www.nmc.cn/publish/area/xinjiang/1h10mw.html
+      西藏3h降水+10m风场: https://www.nmc.cn/publish/area/xizang/3h10mwind.html
+      西藏6h降水+10m风场: https://www.nmc.cn/publish/area/xizang/6h10mwind.html
+      西藏12h降水+10m风场: https://www.nmc.cn/publish/area/xizang/12h10mwind.html
+      西藏雷达组合反射率: https://www.nmc.cn/publish/area/xizang/radar.html
+    新疆MESO:
+      新疆1h降水+10m风场: https://www.nmc.cn/publish/area/xinjiang/1hrain10wind.html
+      新疆3h降水+10m风场: https://www.nmc.cn/publish/area/xinjiang/3h10mw.html
+      新疆6h降水+10m风场: https://www.nmc.cn/publish/area/xinjiang/6h10mw.html
+      新疆12h降水+10m风场: https://www.nmc.cn/publish/area/xinjiang/12h10mw.html
+      新疆雷达组合反射率: https://www.nmc.cn/publish/area/xinjiang/radar.html
+    华东MESO:
+      华东1h降水+10m风场: https://www.nmc.cn/publish/area/he/1h10mwind.html
+      华东3h降水+10m风场: https://www.nmc.cn/publish/area/he/3h10mw.html
+      华东6h降水+10m风场: https://www.nmc.cn/publish/area/he/6h10mw.html
+      华东12h降水+10m风场: https://www.nmc.cn/publish/area/he/12h10mw.html
+      华东雷达组合反射率: https://www.nmc.cn/publish/area/he/radar.html
+    $单站:
+      逐小时预报演变图:
+        逐小时预报演变图北京: https://www.nmc.cn/publish/station/hour/beijing.html
+        逐小时预报演变图上海: https://www.nmc.cn/publish/station/hour/shanghai.html
+        逐小时预报演变图天津: https://www.nmc.cn/publish/station/hour/tianjing.html
+        逐小时预报演变图重庆: https://www.nmc.cn/publish/station/hour/chongqing.html
+        逐小时预报演变图哈尔滨: https://www.nmc.cn/publish/station/hour/heb.html
+        逐小时预报演变图长春: https://www.nmc.cn/publish/station/hour/chuangchun.html
+        逐小时预报演变图沈阳: https://www.nmc.cn/publish/station/hour/shenyang.html
+        逐小时预报演变图呼和浩特: https://www.nmc.cn/publish/station/hour/fhht.html
+        逐小时预报演变图石家庄: https://www.nmc.cn/publish/station/hour/shijiazhuang.html
+        逐小时预报演变图乌鲁木齐: https://www.nmc.cn/publish/station/hour/wlmq.html
+        逐小时预报演变图兰州: https://www.nmc.cn/publish/station/hour/nanzhou.html
+        逐小时预报演变图西宁: https://www.nmc.cn/publish/station/hour/xining.html
+        逐小时预报演变图西安: https://www.nmc.cn/publish/station/hour/xian.html
+        逐小时预报演变图银川: https://www.nmc.cn/publish/station/hour/yinchuan.html
+        逐小时预报演变图郑州: https://www.nmc.cn/publish/station/hour/zhengzhou.html
+        逐小时预报演变图济南: https://www.nmc.cn/publish/station/hour/jinan.html
+        逐小时预报演变图太原: https://www.nmc.cn/publish/station/hour/taiyuan.html
+        逐小时预报演变图合肥: https://www.nmc.cn/publish/station/hour/hef.html
+        逐小时预报演变图武汉: https://www.nmc.cn/publish/station/hour/wuhan.html
+        逐小时预报演变图长沙: https://www.nmc.cn/publish/station/hour/changsha.html
+        逐小时预报演变图南京: https://www.nmc.cn/publish/station/hour/nanjing.html
+        逐小时预报演变图成都: https://www.nmc.cn/publish/station/hour/chengdu.html
+        逐小时预报演变图贵阳: https://www.nmc.cn/publish/station/hour/guiyang.html
+        逐小时预报演变图昆明: https://www.nmc.cn/publish/station/hour/hunming.html
+        逐小时预报演变图南宁: https://www.nmc.cn/publish/station/hour/nanning.html
+        逐小时预报演变图拉萨: https://www.nmc.cn/publish/station/hour/lasa.html
+        逐小时预报演变图杭州: https://www.nmc.cn/publish/station/hour/hangzhou.html
+        逐小时预报演变图南昌: https://www.nmc.cn/publish/station/hour/nanchuan.html
+        逐小时预报演变图广州: https://www.nmc.cn/publish/station/hour/guagnzhou.html
+        逐小时预报演变图福州: https://www.nmc.cn/publish/station/hour/fuzhou.html
+        逐小时预报演变图台北: https://www.nmc.cn/publish/station/hour/taibei.html
+        逐小时预报演变图海口: https://www.nmc.cn/publish/station/hour/haikou.html
+        逐小时预报演变图香港: https://www.nmc.cn/publish/station/hour/xianggang.html
+        逐小时预报演变图澳门: https://www.nmc.cn/publish/station/hour/aoming.html
+      相对湿度温度风:
+        相对湿度温度风北京: https://www.nmc.cn/publish/station/rhtw/beijing.html
+        相对湿度温度风上海: https://www.nmc.cn/publish/station/rhtw/shanghai.html
+        相对湿度温度风天津: https://www.nmc.cn/publish/station/rhtw/tianjin.html
+        相对湿度温度风重庆: https://www.nmc.cn/publish/station/rhtw/chongqing.html
+        相对湿度温度风哈尔滨: https://www.nmc.cn/publish/station/rhtw/heb.html
+        相对湿度温度风长春: https://www.nmc.cn/publish/station/rhtw/changchun.html
+        相对湿度温度风沈阳: https://www.nmc.cn/publish/station/rhtw/shenyang.html
+        相对湿度温度风呼和浩特: https://www.nmc.cn/publish/station/rhtw/hhht.html
+        相对湿度温度风石家庄: https://www.nmc.cn/publish/station/rhtw/shijiazhuang.html
+        相对湿度温度风乌鲁木齐: https://www.nmc.cn/publish/station/rhtw/wlmq.html
+        相对湿度温度风兰州: https://www.nmc.cn/publish/station/rhtw/lanzhou.html
+        相对湿度温度风西宁: https://www.nmc.cn/publish/station/rhtw/xining.html
+        相对湿度温度风西安: https://www.nmc.cn/publish/station/rhtw/xian.html
+        相对湿度温度风银川: https://www.nmc.cn/publish/station/rhtw/yinchun.html
+        相对湿度温度风郑州: https://www.nmc.cn/publish/station/rhtw/zhenzhou.html
+        相对湿度温度风济南: https://www.nmc.cn/publish/station/rhtw/jinan.html
+        相对湿度温度风太原: https://www.nmc.cn/publish/station/rhtw/taiyuan.html
+        相对湿度温度风合肥: https://www.nmc.cn/publish/station/rhtw/hef.html
+        相对湿度温度风武汉: https://www.nmc.cn/publish/station/rhtw/wuhan.html
+        相对湿度温度风长沙: https://www.nmc.cn/publish/station/rhtw/changsha.html
+        相对湿度温度风南京: https://www.nmc.cn/publish/station/rhtw/nanjing.html
+        相对湿度温度风成都: https://www.nmc.cn/publish/station/rhtw/chengdu.html
+        相对湿度温度风贵阳: https://www.nmc.cn/publish/station/rhtw/guiyang.html
+        相对湿度温度风昆明: https://www.nmc.cn/publish/station/rhtw/hunming.html
+        相对湿度温度风南宁: https://www.nmc.cn/publish/station/rhtw/nanning.html
+        相对湿度温度风拉萨: https://www.nmc.cn/publish/station/rhtw/lasa.html
+        相对湿度温度风杭州: https://www.nmc.cn/publish/station/rhtw/hangzhou.html
+        相对湿度温度风南昌: https://www.nmc.cn/publish/station/rhtw/nanchan.html
+        相对湿度温度风广州: https://www.nmc.cn/publish/station/rhtw/gzhou.html
+        相对湿度温度风福州: https://www.nmc.cn/publish/station/rhtw/fuzhou.html
+        相对湿度温度风台北: https://www.nmc.cn/publish/station/rhtw/taibei.html
+        相对湿度温度风海口: https://www.nmc.cn/publish/station/rhtw/haikou.html
+        相对湿度温度风香港: https://www.nmc.cn/publish/station/rhtw/xiangguan.html
+        相对湿度温度风澳门: https://www.nmc.cn/publish/station/rhtw/aoming.html
+  CMA区域集合模式: # REPS
+    全国REPS:
+      全国24h累积降水:
+        $全国24h累积降水概率预报:
+          全国24h累积降水概率预报0.1mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/0.1mm/gailvyubao/index.html
+          全国24h累积降水概率预报10.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/10.0mm/gailvyubao/index.html
+          全国24h累积降水概率预报25.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/25.0mm/gailvyubao/index.html
+          全国24h累积降水概率预报50.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/50.0mm/gailvyubao/index.html
+          全国24h累积降水概率预报100.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/100.0mm/gailvyubao/index.html
+        全国24h累积降水集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/24hleijijiangshui/jihepingjunhelisandu/index.html
+      全国12h累积降水:
+        全国12h累积降水集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/jihepingjunhelisandu/index.html
+        $全国12h累积降水概率预报:
+          全国12h累积降水概率预报0.1mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/0.1mm/gailvyubao/index.html
+          全国12h累积降水概率预报5.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/5.0mm/gailvyubao/index.html
+          全国12h累积降水概率预报15.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/15.0mm/gailvyubao/index.html
+          全国12h累积降水概率预报30.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/30.0mm/gailvyubao/index.html
+          全国12h累积降水概率预报70.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/12hleijijiangshui/70.0mm/gailvyubao/index.html
+      全国6h累积降水:
+        全国6h累积降水集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/jihepingjunhelisandu/index.html
+        $全国6h累积降水概率预报:
+          全国6h累积降水概率预报0.1mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/0.1mm/gailvyubao/index.html
+          全国6h累积降水概率预报4.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/4.0mm/gailvyubao/index.html
+          全国6h累积降水概率预报13.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/13.0mm/gailvyubao/index.html
+          全国6h累积降水概率预报25.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/25.0mm/gailvyubao/index.html
+          全国6h累积降水概率预报60.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/6hleijijiangshui/60.0mm/gailvyubao/index.html
+      全国3h累积降水:
+        全国3h累积降水集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/jihepingjunhelisandu/index.html
+        $全国3h累积降水概率预报:
+          全国3h累积降水概率预报0.1mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/0.1mm/gailvyubao/index.html
+          全国3h累积降水概率预报3.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/3.0mm/gailvyubao/index.html
+          全国3h累积降水概率预报10.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/10.0mm/gailvyubao/index.html
+          全国3h累积降水概率预报20.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/20.0mm/gailvyubao/index.html
+          全国3h累积降水概率预报50.0mm: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/3hleijijiangshui/50.0mm/gailvyubao/index.html
+      全国组合雷达反射率:
+        $全国组合雷达反射率概率预报:
+          全国组合雷达反射率概率预报5: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/zuheleidafanshelv/5/gailvyubao/index.html
+          全国组合雷达反射率概率预报10: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/zuheleidafanshelv/10/gailvyubao/index.html
+          全国组合雷达反射率概率预报20: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/zuheleidafanshelv/20/gailvyubao/index.html
+          全国组合雷达反射率概率预报30: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/zuheleidafanshelv/30/gailvyubao/index.html
+          全国组合雷达反射率概率预报40: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/zuheleidafanshelv/40/gailvyubao/index.html
+        全国组合雷达反射率集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao/quanguo/zuheleidafanshelv/jihepingjunhelisandu/index.html
+      全国对流有效位能:
+        全国对流有效位能集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/jihepingjunhelisandu/index.html
+        $全国对流有效位能概率预报:
+          全国对流有效位能概率预报200: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/200/gailvyubao/index.html
+          全国对流有效位能概率预报500: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/500/gailvyubao/index.html
+          全国对流有效位能概率预报1000: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/1000/gailvyubao/index.html
+          全国对流有效位能概率预报1500: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/1500/gailvyubao/index.html
+          全国对流有效位能概率预报2000: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/2000/gailvyubao/index.html
+          全国对流有效位能概率预报2500: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyouxiaoweineng/2500/gailvyubao/index.html
+      全国对流抑制:
+        全国对流抑制集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyizhicin/jihepingjunhelisandu/index.html
+        $全国对流抑制概率预报:
+          全国对流抑制概率预报50: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyizhicin/50/gailvyubao/index.html
+          全国对流抑制概率预报100: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyizhicin/100/gailvyubao/index.html
+          全国对流抑制概率预报150: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyizhicin/150/gailvyubao/index.html
+          全国对流抑制概率预报200: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/duiliuyizhicin/200/gailvyubao/index.html
+      全国K指数:
+        全国K指数集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/Kzhishu/jihepingjunhelisandu/index.html
+        $全国K指数概率预报:
+          全国K指数概率预报30: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/Kzhishu/30/gailvyubao/index.html
+          全国K指数概率预报35: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/Kzhishu/35/gailvyubao/index.html
+          全国K指数概率预报40: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/Kzhishu/40/gailvyubao/index.html
+          全国K指数概率预报45: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/Kzhishu/45/gailvyubao/index.html
+      全国0-3公里垂直切变:
+        全国0-3公里垂直切变集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/0-3gonglichuizhiqiebian/jihepingjunhelisandu/index.html
+        $全国0-3公里垂直切变概率预报:
+          全国0-3公里垂直切变概率预报12: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/0-3gonglichuizhiqiebian/12/gailvyubao/index.html
+          全国0-3公里垂直切变概率预报16: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/0-3gonglichuizhiqiebian/16/gailvyubao/index.html
+          全国0-3公里垂直切变概率预报20: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/0-3gonglichuizhiqiebian/20/gailvyubao/index.html
+          全国0-3公里垂直切变概率预报24: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/0-3gonglichuizhiqiebian/24/gailvyubao/index.html
+      全国10米全风速:
+        全国10米全风速集合平均和离散度: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao/quanguo/10miquanfengsu/jihepingjunhelisandu/index.html
+        $全国10米全风速概率预报:
+          全国10米全风速概率预报5.5: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/10miquanfengsu/5.5/gailvyubao/index.html
+          全国10米全风速概率预报8: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/10miquanfengsu/8/gailvyubao/index.html
+          全国10米全风速概率预报10.8: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/10miquanfengsu/10.8/gailvyubao/index.html
+          全国10米全风速概率预报17.2: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/10miquanfengsu/17.2/gailvyubao/index.html
+      全国2m温度REPS: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/quanguo/2miwendu/jihepingjunhelisandu/index.html
+    华北REPS:
+      $华北24h累积降水:
+        华北24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huabei/24hleijijiangshui/youpiaotu/index.html
+        华北24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huabei/24hleijijiangshui/zuidazhi/index.html
+      $华北6h累积降水:
+        华北6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huabei/6hleijijiangshui/youpiaotu/index.html
+        华北6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huabei/6hleijijiangshui/zuidazhi/index.html
+      $华北雷达组合反射率:
+        华北雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huabei/leidazuhefanshelv/youpiaotu/index.html
+    华南REPS:
+      $华南24h累积降水:
+        华南24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huanan/24hleijijiangshui/youpiaotu/index.html
+        华南24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huanan/24hleijijiangshui/zuidazhi/index.html
+      $华南6h累积降水:
+        华南6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huanan/6hleijijiangshui/youpiaotu/index.html
+        华南6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huanan/6hleijijiangshui/zuidazhi/index.html
+      $华南雷达组合反射率:
+        华南雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huanan/leidazuhefanshelv/youpiaotu/index.html
+    西南REPS:
+      $西南24h累积降水:
+        西南24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinandiqudongbu/24hleijijiangshui/youpiaotu/index.html
+        西南24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinandiqudongbu/24hleijijiangshui/zuidazhi/index.html
+      $西南6h累积降水:
+        西南6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinandiqudongbu/6hleijijiangshui/youpiaotu/index.html
+        西南6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinandiqudongbu/6hleijijiangshui/zuidazhi/index.html
+      $西南雷达组合反射率:
+        西南雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinandiqudongbu/leidazuhefanshelv/youpiaotu/index.html
+    西北REPS:
+      $西北24h累积降水:
+        西北24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xibeidiqudongbu/24hleijijiangshui/youpiaotu/index.html
+        西北24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xibeidiqudongbu/24hleijijiangshui/zuidazhi/index.html
+      $西北6h累积降水:
+        西北6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xibeidiqudongbu/6hleijijiangshui/youpiaotu/index.html
+        西北6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xibeidiqudongbu/6hleijijiangshui/zuidazhi/index.html
+      $西北雷达组合反射率:
+        西北雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xibeidiqudongbu/leidazuhefanshelv/youpiaotu/index.html
+    东北REPS:
+      $东北24h累积降水:
+        东北24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/dongbei/24hleijijiangshui/youpiaotu/index.html
+        东北24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/dongbei/24hleijijiangshui/zuidazhi/index.html
+      $东北6h累积降水:
+        东北6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/dongbei/6hleijijiangshui/youpiaotu/index.html
+        东北6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/dongbei/6hleijijiangshui/zuidazhi/index.html
+      $东北雷达组合反射率:
+        东北雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/dongbei/leidazuhefanshelv/youpiaotu/index.html
+    华中REPS:
+      $华中24h累积降水:
+        华中24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huazhong/24hleijijiangshui/youpiaotu/index.html
+        华中24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huazhong/24hleijijiangshui/zuidazhi/index.html
+      $华中6h累积降水:
+        华中6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huazhong/6hleijijiangshui/youpiaotu/index.html
+        华中6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huazhong/6hleijijiangshui/zuidazhi/index.html
+      $华中雷达组合反射率:
+        华中雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huazhong/leidazuhefanshelv/youpiaotu/index.html
+    西藏REPS:
+      $西藏24h累积降水:
+        西藏24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xicang/24hleijijiangshui/youpiaotu/index.html
+        西藏24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xicang/24hleijijiangshui/zuidazhi/index.html
+      $西藏6h累积降水:
+        西藏6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xicang/6hleijijiangshui/youpiaotu/index.html
+        西藏6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xicang/6hleijijiangshui/zuidazhi/index.html
+      $西藏雷达组合反射率:
+        西藏雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xicang/leidazuhefanshelv/youpiaotu/index.html
+    新疆REPS:
+      $新疆24h累积降水:
+        新疆24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinjiang/24hleijijiangshui/youpiaotu/index.html
+        新疆24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinjiang/24hleijijiangshui/zuidazhi/index.html
+      $新疆6h累积降水:
+        新疆6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinjiang/6hleijijiangshui/youpiaotu/index.html
+        新疆6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinjiang/6hleijijiangshui/zuidazhi/index.html
+      $新疆雷达组合反射率:
+        新疆雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/xinjiang/leidazuhefanshelv/youpiaotu/index.html
+    华东REPS:
+      $华东24h累积降水:
+        华东24h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huadong/24hleijijiangshui/youpiaotu/index.html
+        华东24h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huadong/24hleijijiangshui/zuidazhi/index.html
+      $华东6h累积降水:
+        华东6h累积降水邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huadong/6hleijijiangshui/youpiaotu/index.html
+        华东6h累积降水最大值: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huadong/6hleijijiangshui/zuidazhi/index.html
+      $华东雷达组合反射率:
+        华东雷达组合反射率邮票图: https://www.nmc.cn/publish/shuzhiyubao/GRAPESquyujiheyubao_new/huadong/leidazuhefanshelv/youpiaotu/index.html
+  CMA台风模式: # TYM
+    $CMA_TYM:
+      台风路径: https://www.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/taifenglujing/index.html
+      台风强度: # TODO:
+        # 美莎克: https://www.nmc.cn/publish/nwpc/stym/cnpw-01/img1.html
+        # 巴威:
+        https://www.nmc.cn/publish/nwpc/stym/cnpw-01/img2.html
+        # 米克拉: https://www.nmc.cn/publish/nwpc/stym/cnpw-01/img3.html
+      10m风场: https://www.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/10mfengchang/index.html
+      累计降水:
+        累计降水24小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijijiangshui/24xiaoshi/index.html
+        累计降水48小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijijiangshui/82xiaoshi/index.html
+        累计降水72小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijijiangshui/72xiaoshi/index.html
+        累计降水96小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijijiangshui/96xiaoshi/index.html
+        累计降水120小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijijiangshui/120xiaoshi/index.html
+      累计大风:
+        累计大风24小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijidafeng/24xiaoshi/index.html
+        累计大风48小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijidafeng/48xiaoshi/index.html
+        累计大风72小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijidafeng/72xiaoshi/index.html
+        累计大风96小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijidafeng/96xiaoshi/index.html
+        累计大风120小时: https://www.nmc.cn/publish/shuzhiyubao/GRAPEStaifengyubao/GRAPES_TYM/leijidafeng/120xiaoshi/index.html
+      组合雷达反射率: https://www.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/zuheleidafanshelv/index.html
+      $FY4A云图模拟:
+        红外亮温: https://www.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/FY2Gweixingyuntumoni/11umliangwen(hongwai)/index.html
+        水汽亮温: https://www.nmc.cn/publish/shuzhiyubao/GRAPES_TYMquyutaifengmoshi/FY2Gweixingyuntumoni/6.8/index.html
+    $CMA_集合预报: # TODO:
+      全球台风袭击概率: https://www.nmc.cn/publish/nwpc/stym/cnpw-02/img5.html # 巴威
+      全球台风集合路径: https://www.nmc.cn/publish/nwpc/stym/cnpw-03/img4.html # 巴威
+      区域集合轨迹及登陆点: https://www.nmc.cn/publish/nwpc/stym/cnpw-04/img1.html
+      区域集合登陆时间及最低气压: https://www.nmc.cn/publish/nwpc/stym/cnpw-05/img1.html
+      区域集合登陆时间及最大风速: https://www.nmc.cn/publish/nwpc/stym/cnpw-06/img1.html
+  $海浪模式:
+    浪高浪向叠加图:
+      全球浪高浪向叠加图: https://www.nmc.cn/publish/nwp/ww3/globe/index.html
+      大西洋浪高浪向叠加图: https://www.nmc.cn/publish/nwp/ww3/atlantic/waveheight-wavespeed-meandirection.html
+      印度洋浪高浪向叠加图: https://www.nmc.cn/publish/nwp/ww3/indianocean/waveheight-wavespeed-meandirection.html
+      太平洋浪高浪向叠加图: https://www.nmc.cn/publish/nwp/ww3/pacific/waveheight-wavespeed-meandirection.html
