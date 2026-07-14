@@ -20,7 +20,7 @@ export interface Config {
   default: keyof typeof composers
   nodata: string
   root: string
-  region: 'all' | 'radar' | StringTree
+  region: 'radar' | 'all' | StringTree
 }
 
 export const Config: Schema<Config> = Schema.object({
@@ -28,9 +28,9 @@ export const Config: Schema<Config> = Schema.object({
   nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
   root: Schema.string().description('根区域名。'),
   region: Schema.union([
-    Schema.const('all').description('所有区域。'),
-    Schema.const('radar').description('雷达图。'),
-    Schema.any().description('自定义索引。'),
+    Schema.const('radar').description('雷达图'),
+    Schema.const('all').description('所有区域'),
+    Schema.any().description('自定义 JSON'),
   ]).default('radar').description('区域索引。'),
 })
 
