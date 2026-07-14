@@ -17,22 +17,26 @@ export const inject = {
 }
 
 export interface Config {
-  default: keyof typeof composers
+  resolver: keyof typeof resolvers
   nodata: string
   root: string
   region: 'radar' | 'all' | StringTree
 }
 
-export const Config: Schema<Config> = Schema.object({
-  default: Schema.string().default('img').description('默认输出类型。'),
-  nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
-  root: Schema.string().description('根区域名。'),
-  region: Schema.union([
-    Schema.const('radar').description('雷达图'),
-    Schema.const('all').description('所有区域'),
-    Schema.any().description('自定义 JSON'),
-  ]).default('radar').description('区域索引。'),
-})
+export const Config: Schema<Config> = Schema.intersect([
+  Schema.object({
+    resolver: Schema.string().default('img').description('默认输出类型。'),
+    nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
+    root: Schema.string().description('根区域名。'),
+  }),
+  Schema.object({
+    region: Schema.union([
+      Schema.const('radar').description('雷达图'),
+      Schema.const('all').description('所有区域'),
+      Schema.any().description('自定义 JSON'),
+    ]).default('radar').description('区域索引。'),
+  }).description('高级设置'),
+])
 
 interface StringTree { [key: string]: string | StringTree }
 
@@ -48,9 +52,9 @@ function makeProduct(url: string) {
   return { url, slug, filename }
 }
 
-type Composer = (products: Product[], options: Dict) => Awaitable<h>
+type Resolver = (products: Product[], options: Dict) => Awaitable<h>
 
-const composers: Record<string, Composer> = {
+const resolvers: Record<string, Resolver> = {
   img: products => h(h.Fragment, ...products.map(({ url }) => h.img(url))),
   url: products => h.text(products.map(({ url }) => url).join('\n')),
 }
@@ -98,7 +102,7 @@ export function apply(ctx: Context, config: Config) {
     .option('count', '-n <count:posint>')
     .option('reverse', '-R')
     .option('high', '-H')
-    .option('type', '--type <type:string>', { type: Object.keys(composers) })
+    .option('type', '--type <type:string>', { type: Object.keys(resolvers) })
     .option('type', '--img', { value: 'img' })
     .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
@@ -114,15 +118,15 @@ export function apply(ctx: Context, config: Config) {
       if (products.length === 0)
         products.push(makeProduct(config.nodata))
 
-      options.type ??= config.default
+      options.type ??= config.resolver
       options.count ??= options.type === 'img' ? 1 : undefined
       products = products.slice(0, options.count)
       if (radar.reverse === !!options.reverse)
         products.reverse()
 
-      const composer = composers[options.type]
+      const resolver = resolvers[options.type]
       Object.assign(options, { session })
-      return await composer(products, options)
+      return await resolver(products, options)
     })
 
   ctx.inject(['ffmpeg'], async (ctx) => {
@@ -134,8 +138,8 @@ export function apply(ctx: Context, config: Config) {
       .option('plays', '--plays <plays:natural>', { fallback: 1 })
       .option('plays', '--loop', { value: 0 })
 
-    composers.apng = video(ctx, 'apng', h.img)
-    composers.gif = video(ctx, 'gif', h.img, (builder, options) => {
+    resolvers.apng = video(ctx, 'apng', h.img)
+    resolvers.gif = video(ctx, 'gif', h.img, (builder, options) => {
       // eslint-disable-next-line style/multiline-ternary
       options.loop = options.plays === 0 ? 0
         : options.plays === 1 ? -1 : options.plays - 1
@@ -147,7 +151,7 @@ export function apply(ctx: Context, config: Config) {
           '[out2][p]paletteuse',
         ].join(';'))
     })
-    composers.mp4 = video(ctx, 'mp4', h.video, (builder) => {
+    resolvers.mp4 = video(ctx, 'mp4', h.video, (builder) => {
       builder.outputOption('-vf', 'scale=ceil(iw/2)*2:ceil(ih/2)*2')
     })
   })
@@ -181,7 +185,7 @@ function video(
   format: string,
   video: (url: string) => h,
   foo?: (builder: FFmpegBuilder, options: Dict) => void,
-): Composer {
+): Resolver {
   return async (products, options) => {
     if (products.length === 1)
       return h.img(products[0].url)
