@@ -9,7 +9,7 @@ import { pathToFileURL } from 'node:url'
 import { JSDOM } from 'jsdom'
 import { h, Schema } from 'koishi'
 import zhCN from '../locales/zh-CN.yml'
-import nestedRadars from './radars.yml'
+import allRegions from './radars.yml'
 
 export const name = 'nmc-radar'
 export const inject = {
@@ -18,14 +18,20 @@ export const inject = {
 
 export interface Config {
   default: keyof typeof composers
-  root: string
   nodata: string
+  root: string
+  region: 'all' | 'radar' | StringTree
 }
 
 export const Config: Schema<Config> = Schema.object({
   default: Schema.string().default('img').description('默认输出类型。'),
-  root: Schema.string().default('中央气象台').description('根区域。'),
   nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
+  root: Schema.string().description('根区域名。'),
+  region: Schema.union([
+    Schema.const('all').description('所有区域。'),
+    Schema.const('radar').description('雷达图。'),
+    Schema.any().description('自定义索引。'),
+  ]).default('radar').description('区域索引。'),
 })
 
 interface StringTree { [key: string]: string | StringTree }
@@ -37,7 +43,6 @@ interface Product {
 }
 
 function makeProduct(url: string) {
-  url = url.replace('/medium/', '/')
   const filename = new URL(url).pathname.split('/').pop()!
   const slug = filename.replace(/\..+$/, '')
   return { url, slug, filename }
@@ -75,12 +80,24 @@ export function apply(ctx: Context, config: Config) {
       radarMap.set(name, { url: value, reverse })
     }
   }
-  traverse({ [config.root]: nestedRadars })
+
+  if (config.region === 'all') {
+    config.root ??= '中央气象台'
+    config.region = allRegions
+  }
+  else if (config.region === 'radar') {
+    config.root ??= '雷达图'
+    config.region = allRegions['$天气实况']['雷达图']
+  }
+  config.root ??= '根区域'
+
+  traverse({ [config.root]: config.region })
 
   const command = ctx.command('radar <name:string>')
     .option('name', '--name <name:string>')
     .option('count', '-n <count:posint>')
     .option('reverse', '-R')
+    .option('high', '-H')
     .option('type', '--type <type:string>', { type: Object.keys(composers) })
     .option('type', '--img', { value: 'img' })
     .option('type', '--url', { value: 'url' })
@@ -92,6 +109,8 @@ export function apply(ctx: Context, config: Config) {
       const { window: { document } } = new JSDOM(await ctx.http.get(radar.url))
       const nodes = document.querySelectorAll<HTMLElement>('div[data-img]')
       let products = Array.from(nodes).map(({ dataset }) => makeProduct(dataset.img!))
+      if (options.high)
+        products.forEach(product => product.url = product.url.replace('/medium/', ''))
       if (products.length === 0)
         products.push(makeProduct(config.nodata))
 
@@ -134,7 +153,7 @@ export function apply(ctx: Context, config: Config) {
   })
 
   command.subcommand('.list [name:string]')
-    .action(({ session }, name = config.root) => {
+    .action(({ session }, name = config.root!) => {
       const region = regionMap.get(name)
       if (!region)
         return session?.text('.unknown', [name])

@@ -5,6 +5,7 @@ commands:
       name: 气象图名
       count: 最大输出数量
       reverse: 反转顺序
+      high: 高分辨率
       type: 输出类型
       type.img: 输出图片
       type.url: 输出 URL
@@ -12,8 +13,8 @@ commands:
       fps: 帧率
       loop: 循环次数
     messages:
-      unknown: 未知气象图名：{0}。
+      unknown: 雷达图 {0} 不存在！使用 radar.list 查看所有可用雷达图。
   radar.list:
-    description: 查看图组内所有气象图
+    description: 查看图组内所有雷达图
     messages:
-      unknown: 未知气象图组名：{0}。
+      unknown: 雷达图组 {0} 不存在！使用 radar.list 查看所有可用雷达图。
