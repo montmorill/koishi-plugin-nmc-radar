@@ -17,6 +17,7 @@ export const inject = {
 }
 
 export interface Config {
+  aliases: Record<string, string>
   resolver: keyof typeof resolvers
   nodata: string
   root: string
@@ -25,6 +26,7 @@ export interface Config {
 
 export const Config: Schema<Config> = Schema.intersect([
   Schema.object({
+    aliases: Schema.dict(Schema.string()).description('区域别名。'),
     resolver: Schema.string().default('img').description('默认输出类型。'),
     nodata: Schema.string().role('link').default('https://image.nmc.cn/assets/img/nodata.jpg').description('无数据图片。'),
     root: Schema.string().description('根区域名。'),
@@ -107,6 +109,7 @@ export function apply(ctx: Context, config: Config) {
     .option('type', '--url', { value: 'url' })
     .action(async ({ session, options = {} as Dict }, name) => {
       options.name ??= name
+      options.name = config.aliases[options.name] ?? options.name
       const radar = radarMap.get(options.name)
       if (!radar)
         return void await session?.send(session.text('.unknown', [options.name]))
@@ -158,6 +161,7 @@ export function apply(ctx: Context, config: Config) {
 
   command.subcommand('.list [name:string]')
     .action(({ session }, name = config.root!) => {
+      name = config.aliases[name] ?? name
       const region = regionMap.get(name)
       if (!region)
         return session?.text('.unknown', [name])
